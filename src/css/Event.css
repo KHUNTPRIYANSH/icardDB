@@ -14,7 +14,7 @@
   width: 20vw;
   min-width: 353px;
   /* border: 1px solid rgb(230, 230, 230); */
-  overflow: hidden;
+  overflow: hidden !important;
   transition: all 1s;
   background: #25314d;
   border-radius: 13px;
@@ -51,7 +51,7 @@
   content: '24';
   content: 'Nov';
   text-align: center;
-
+  border-radius: 0 13px 0 0;
   padding: 25px 35px;
   font-size: 1.5rem;
   font-weight: bolder;
@@ -86,4 +86,38 @@
   margin-top: 20px !important;
   background-color: #ffc107 !important;
   cursor: pointer;
+}
+.prog {
+  width: 100%;
+  height: 20vh;
+  /* background-color: crimson; */
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 50px;
+  background-color: #25314d;
+}
+.prog input {
+  width: 40%;
+  min-height: 40px;
+  /* background: linear-gradient(159deg, #252532 0, #23232d 100%); */
+  background: #1e283e;
+  border: none;
+  padding: 13px 15px;
+  font-family: 'Alegreya', sans-serif;
+  font-size: 0.9rem;
+  color: whitesmoke;
+}
+.prog .btn {
+  top: 0;
+  padding: 12px 35px;
+}
+.prog input {
+  border: 1.05px solid transparent !important;
+  transition: 0.3s ease-in-out !important;
+}
+
+.prog input:hover {
+  border-radius: 2px !important;
+  border: 1.05px solid whitesmoke !important;
 }

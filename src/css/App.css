@@ -30,8 +30,11 @@ main {
   gap: 10vh;
 }
 .btn {
+  outline: none !important;
+  border: none !important;
   color: #191923;
-  background-color: #f3bc18;
+  /* background-color: #f3bc18; */
+  background-color: #daaa1a;
   padding: 13px 35px;
   font-weight: 600;
   letter-spacing: 3px;
@@ -45,8 +48,25 @@ main {
   z-index: 1;
 }
 .btn:hover {
-  background-color: #daaa18;
+  background-color: #f3bc18;
   /* transform: scale(1.05); */
   /* padding: 20px 48px; */
   /* animation: jump 0.7s infinite ease-in-out alternate; */
+}
+@media (max-width: 500px) {
+  #router {
+    padding: 5px;
+  }
+  .nn2 {
+    flex-direction: column;
+    align-items: flex-start !important;
+    justify-content: flex-start;
+    gap: 5px !important;
+  }
+  .event-sec {
+    justify-content: center;
+  }
+  .e-list {
+    justify-content: space-evenly !important;
+  }
 }

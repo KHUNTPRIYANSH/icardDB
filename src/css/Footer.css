@@ -54,5 +54,5 @@ footer .ff {
 }
 .cp .mid:hover {
   color: white;
-  transform: scale(1.2);
+  /* transform: scale(1.2); */
 }

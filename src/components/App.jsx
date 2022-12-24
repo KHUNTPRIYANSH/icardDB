@@ -10,6 +10,8 @@ import Artists from "./Artists";
 import Contact from "./Contact";
 import Events from "./Events";
 import Footer from "./Footer";
+import EventForm from "./EventForm";
+import ProgressCheck from "./ProgressCheck";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,6 +22,8 @@ function App() {
       <main>
         <Menu />
         <div id="router">
+          <EventForm />
+          <ProgressCheck />
           <Artists />
           <Contact />
           <Events />

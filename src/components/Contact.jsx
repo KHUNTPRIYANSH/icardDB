@@ -24,7 +24,7 @@ const Contact = () => {
           </div>
           <div className="input">
             <label className="icon">
-              <Dafv teRangeRoundedIcon />
+              <DateRangeRoundedIcon />
             </label>
             <input type="date" className="name" placeholder="" />
           </div>
