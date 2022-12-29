@@ -3,7 +3,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
+  /* transition: all 0s !important; */
 }
 body {
-  background-color: #141b2d;
+  background-color: var(--dark1);
 }

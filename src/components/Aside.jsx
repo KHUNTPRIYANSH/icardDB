@@ -9,6 +9,7 @@ import NewspaperIcon from "@mui/icons-material/Newspaper";
 import PeopleIcon from "@mui/icons-material/People";
 import LogoutIcon from "@mui/icons-material/Logout";
 import "../css/Aside.css";
+import { Link } from "react-router-dom";
 const Aside = () => {
   return (
     <>
@@ -69,9 +70,9 @@ const Aside = () => {
             </div>
           </div>
           <div className="g-5">
-            <button className="log-out">
+            <Link to="/signIn" className="log-out">
               <LogoutIcon id="gold" /> LogOut
-            </button>
+            </Link>
           </div>
         </section>
       </aside>

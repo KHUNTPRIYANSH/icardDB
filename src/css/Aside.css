@@ -1,5 +1,5 @@
 aside {
-  color: rgb(216, 216, 216);
+  color: var(--color2d);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -8,11 +8,11 @@ aside {
   max-width: 270px;
   width: 270px;
   height: 100vh;
-  background: #1f2940;
+  background: var(--dark2-t);
   overflow-y: scroll;
 }
 aside header {
-  border-bottom: 0.5px solid rgba(245, 245, 245, 0.409);
+  border-bottom: 0.5px solid var(--bc-w);
   height: auto;
   width: 100%;
   padding: 15px;
@@ -24,25 +24,25 @@ aside header {
   min-height: 80px;
   position: sticky;
 
-  background: #1f2940e3;
+  background: var(--dark2-t);
   backdrop-filter: blur(5px);
   top: 0;
   z-index: 111;
 }
 .gold {
   font-size: 2.5rem;
-  color: #ffc107 !important;
+  color: var(--gold1) !important;
 }
 aside::-webkit-scrollbar {
   width: 2.5px;
 }
 
 aside::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(255, 213, 0, 0.3);
+  box-shadow: inset 0 0 6px var(--gold3);
 }
 
 aside::-webkit-scrollbar-thumb {
-  background-color: #ffc107;
+  background-color: var(--gold1);
   border-radius: 50px;
 
   /* outline: 1px solid #e1af16; */
@@ -75,7 +75,7 @@ aside > * {
   transform: scale(1.2);
 }
 .gray {
-  color: rgb(190, 190, 190);
+  color: #303030;
   font-size: 0.9rem;
 }
 .profile .name {
@@ -103,7 +103,7 @@ aside > * {
 }
 .log-out {
   background: none;
-  border: 1.5px solid whitesmoke;
+  border: 1.5px solid var(--color2d);
   border-radius: 3px;
   width: 100%;
   display: flex;
@@ -111,7 +111,7 @@ aside > * {
   justify-content: center;
   padding: 7px 35px;
   gap: 7.5px;
-  color: rgb(216, 216, 216);
+  color: var(--color2d);
   border-color: crimson;
   transition: 0.45s all ease-in-out;
 }
@@ -119,7 +119,7 @@ aside > * {
   transition: 0.25s ease-in-out;
 }
 .links:hover {
-  color: #daaa1a;
+  color: var(--gold1);
   /* background-color: rgb(31, 31, 62); */
 }
 .log-out:hover {

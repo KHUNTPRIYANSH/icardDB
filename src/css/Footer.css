@@ -2,8 +2,8 @@
 footer {
   position: relative;
   bottom: 0;
-  background-color: #1f2940;
-  color: #ffffff;
+  background-color: var(--dark2);
+  color: var(--color2d);
   width: 100%;
   padding: 12.5px 25px;
   font-size: 0.9rem !important;
@@ -21,7 +21,7 @@ footer .gold {
   font-size: 0.9rem !important;
   animation-delay: 1.5s;
   transition: 0.5s ease-in-out;
-  color: gold !important;
+  color: var(--gold1) !important;
   animation: beat-g 1.2s ease-in-out infinite alternate;
 }
 
@@ -47,12 +47,12 @@ footer .ff {
   transition: 0.5s ease-in-out;
 }
 .cp .right:hover {
-  color: white;
+  color: var(--color2d);
 }
 .cp .left:hover {
-  color: white;
+  color: var(--color2d);
 }
 .cp .mid:hover {
-  color: white;
-  /* transform: scale(1.2); */
+  color: var(--color2d);
+  transform: scale(1.05);
 }

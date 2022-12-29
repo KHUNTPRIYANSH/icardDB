@@ -1,14 +1,14 @@
 nav {
-  background: #1f2940;
+  background: var(--dark2);
   padding: 15px 35px;
   display: flex;
   align-items: center;
   position: sticky;
   top: 0;
-  background: #1f2940e3;
+  background: var(--dark2-t);
   backdrop-filter: blur(5px);
   justify-content: space-between;
-  border-bottom: 0.5px solid rgba(245, 245, 245, 0.409);
+  border-bottom: 0.5px solid var(--bc-w);
   min-height: 80px;
   z-index: 1111;
 }
@@ -18,11 +18,11 @@ nav .nav-links img {
 }
 .search {
   display: flex;
-  color: whitesmoke;
+  color: var(--color2d);
   align-items: center;
   justify-content: center;
   gap: 15px;
-  border: 1px solid rgba(245, 245, 245, 0.526);
+  border: 1px solid var(--bc-w);
   border-radius: 45px;
   padding: 7px 18px;
 }
@@ -30,7 +30,7 @@ nav .nav-links img {
   outline: none;
   background-color: transparent;
   border: none;
-  color: whitesmoke;
+  color: var(--color2d);
   width: 300px;
 }
 .search input::placeholder {
@@ -40,7 +40,7 @@ nav .nav-links img {
 }
 .nav-links {
   display: flex;
-  color: whitesmoke !important;
+  color: var(--color2d) !important;
   align-items: center;
   justify-content: center;
   gap: 15px;
@@ -54,7 +54,7 @@ nav .nav-links img {
   transition: 0.15s ease-in-out;
 }
 #light:hover {
-  color: #ffc107;
+  color: var(--gold1);
 }
 #mail:hover {
   color: crimson;

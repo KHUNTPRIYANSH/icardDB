@@ -16,10 +16,10 @@
   /* border: 1px solid rgb(230, 230, 230); */
   overflow: hidden !important;
   transition: all 1s;
-  background: #25314d;
+  background: var(--dark3);
   border-radius: 13px;
   /* align-self: flex-start !important; */
-  border-bottom: 13px solid #deab10;
+  border-bottom: 13px solid var(--gold2);
 }
 .eee .e-list .card .card-img {
   width: 100%;
@@ -56,8 +56,8 @@
   font-size: 1.5rem;
   font-weight: bolder;
   width: fit-content;
-  background-color: #deab10;
-  color: white;
+  background-color: var(--gold2);
+  color: whitesmoke;
   z-index: 100;
 }
 .eee .e-list .card .card-info {
@@ -65,15 +65,15 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  color: rgb(192, 192, 192);
+  color: var(--gray);
 }
 .info-t {
-  color: whitesmoke !important;
+  color: var(--color2d) !important;
 }
 .eee .e-list .card .card-info .info-loc {
-  color: #ffc107;
+  color: var(--gold1);
   font-size: 1.3rem;
-  border-left: 3px solid #ffc107;
+  border-left: 3px solid var(--gold1);
   padding-left: 5px;
   /* color: ; */
 }
@@ -84,7 +84,7 @@
 }
 .join {
   margin-top: 20px !important;
-  background-color: #ffc107 !important;
+  background-color: var(--gold1) !important;
   cursor: pointer;
 }
 .prog {
@@ -95,18 +95,18 @@
   align-items: center !important;
   justify-content: center !important;
   gap: 50px;
-  background-color: #25314d;
+  background-color: var(--dark3);
 }
 .prog input {
   width: 40%;
   min-height: 40px;
   /* background: linear-gradient(159deg, #252532 0, #23232d 100%); */
-  background: #1e283e;
+  background: var(--dark1);
   border: none;
   padding: 13px 15px;
   font-family: 'Alegreya', sans-serif;
   font-size: 0.9rem;
-  color: whitesmoke;
+  color: var(--color2d);
 }
 .prog .btn {
   top: 0;
@@ -119,5 +119,5 @@
 
 .prog input:hover {
   border-radius: 2px !important;
-  border: 1.05px solid whitesmoke !important;
+  border: 1.05px solid var(--color2d) !important;
 }

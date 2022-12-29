@@ -1,7 +1,104 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../css/Artist.css";
 // import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 const Artists = () => {
+  const [user, setUser] = useState([]);
+  const [search, setSearch] = useState("");
+  const [sdate, setSdate] = useState("");
+  const admin = "clerk";
+  const getuser = async () => {
+    setSearch("");
+    setSdate("");
+    const data = await fetch(`http://localhost:8080/get/${admin}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const res = await data.json();
+    setUser(res.admindata);
+    // console.log(res.admindata);
+  };
+  const getsearch = async (src) => {
+    // console.log("search");
+
+    const data = await fetch(`http://localhost:8080/get/${admin}/${src}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const res = await data.json();
+    setUser(res.admindata);
+  };
+  const searchByDate = async (dt) => {
+    const data = await fetch(`http://localhost:8080/date/${admin}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        dt,
+      }),
+    });
+    const res = await data.json();
+    setUser(res.admindata);
+  };
+  const getapproved = async () => {
+    let newuser = [];
+    let srch = user;
+    for (let i = 0; i < srch.length; i++) {
+      if (srch[i].PEON == "Approved") {
+        newuser.push(srch[i]);
+      }
+    }
+    setUser(newuser);
+  };
+  const getpending = async () => {
+    let newuser = [];
+    let srch = user;
+    for (let i = 0; i < srch.length; i++) {
+      if (srch[i].PEON == "Pending") {
+        newuser.push(srch[i]);
+      }
+    }
+    setUser(newuser);
+  };
+
+  const sortbyName = async () => {
+    const data = await fetch(`http://localhost:8080/name/${admin}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const res = await data.json();
+    setUser(res.admindata);
+  };
+  const sortbyTime = async () => {
+    const data = await fetch(`http://localhost:8080/time/${admin}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const res = await data.json();
+    setUser(res.admindata);
+  };
+  const sortbyTimed = async () => {
+    const data = await fetch(`http://localhost:8080/timed/${admin}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const res = await data.json();
+    setUser(res.admindata);
+  };
+
+  useEffect(() => {
+    getuser();
+  }, []);
   return (
     <div>
       <header className="event-sec">
@@ -16,12 +113,46 @@ const Artists = () => {
       <div className="t-box">
         <div className="filter" id="filter">
           <div className="fil-title">Filter By Dance</div>
-          <div className="hid-sec" id="hid-sec">
-            <button>odisi</button>
-            <button>Katthak</button>
-            <button>Kathakali</button>
-            <button>Kuchipudi</button>
-            <button>all data</button>
+          <div
+            className="hid-sec"
+            id="hid-sec"
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <div>
+              <button onClick={sortbyName}>SortbyName </button>
+              <button onClick={sortbyTime}>Sortbytime </button>
+              <button onClick={sortbyTimed}>Sortbytime-dsc </button>
+            </div>
+
+            <input
+              placeholder="seach by date"
+              style={{ backgroundColor: "transparent", color: "white" }}
+              type="text"
+              value={sdate}
+              onChange={(e) => {
+                e.preventDefault();
+                searchByDate(e.target.value);
+                setSdate(e.target.value);
+              }}
+            />
+            <input
+              style={{ backgroundColor: "transparent", color: "white" }}
+              value={search}
+              onChange={(e) => {
+                e.preventDefault();
+                getsearch(e.target.value);
+                setSearch(e.target.value);
+              }}
+              placeholder="search here"
+              type="search"
+            />
+            <button onClick={getuser}>reset</button>
+
+            <button onClick={getuser} style={{ marginLeft: "50px" }}>
+              All
+            </button>
+            <button onClick={getapproved}>Approved</button>
+            <button onClick={getpending}>Pending</button>
           </div>
         </div>
 
@@ -37,197 +168,24 @@ const Artists = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Heavy Dancer</td>
-              <td>Saurav</td>
-              <td>Navratri 2022</td>
-              <td>
-                <a href="#">saurav@gmail.com</a>
-              </td>
-              <td>03/10/2022</td>
-              <td className="pd">Pending</td>
-            </tr>
-            <tr>
-              <td>Surila Singer</td>
-              <td>Ajit</td>
-              <td>Republic Day 2022</td>
-              <td>
-                <a href="#">ajit@gmail.com</a>
-              </td>
-              <td>26/01/2023</td>
-              <td className="ap">Approved</td>
-            </tr>
-
-            <tr>
-              <td>KaviOp</td>
-
-              <td>Priyansh</td>
-              <td>KaviMahotsav 2022</td>
-              <td>
-                <a href="#">kpd@gmail.com</a>
-              </td>
-              <td>18/12/2022</td>
-              <td className="pd">Pending</td>
-            </tr>
-
-            <tr>
-              <td>Let's Nacho</td>
-              <td>Amin</td>
-              <td>Independent Day 2022</td>
-              <td>
-                <a href="#">amin@gmail.com</a>
-              </td>
-              <td>15/08/2023</td>
-              <td className="ap">Approved</td>
-            </tr>
-            <tr>
-              <td>The Engineerzzz</td>
-              <td>Virengiri</td>
-              <td>Engineer's Day 2022</td>
-              <td>
-                <a href="#">Virengiri@gmail.com</a>
-              </td>
-              <td>15/09/2022</td>
-              <td className="ap">Approved</td>
-            </tr>
-            <tr>
-              <td>Heavy Dancer</td>
-              <td>Saurav</td>
-              <td>Navratri 2022</td>
-              <td>
-                <a href="#">saurav@gmail.com</a>
-              </td>
-              <td>03/10/2022</td>
-              <td className="pd">Pending</td>
-            </tr>
-            <tr>
-              <td>Surila Singer</td>
-              <td>Ajit</td>
-              <td>Republic Day 2022</td>
-              <td>
-                <a href="#">ajit@gmail.com</a>
-              </td>
-              <td>26/01/2023</td>
-              <td className="ap">Approved</td>
-            </tr>
-
-            <tr>
-              <td>KaviOp</td>
-
-              <td>Priyansh</td>
-              <td>KaviMahotsav 2022</td>
-              <td>
-                <a href="#">kpd@gmail.com</a>
-              </td>
-              <td>18/12/2022</td>
-              <td className="pd">Pending</td>
-            </tr>
-
-            <tr>
-              <td>Let's Nacho</td>
-              <td>Amin</td>
-              <td>Independent Day 2022</td>
-              <td>
-                <a href="#">amin@gmail.com</a>
-              </td>
-              <td>15/08/2023</td>
-              <td className="ap">Approved</td>
-            </tr>
-            <tr>
-              <td>The Engineerzzz</td>
-              <td>Virengiri</td>
-              <td>Engineer's Day 2022</td>
-              <td>
-                <a href="#">Virengiri@gmail.com</a>
-              </td>
-              <td>15/09/2022</td>
-              <td className="ap">Approved</td>
-            </tr>
-            <tr>
-              <td>Heavy Dancer</td>
-              <td>Saurav</td>
-              <td>Navratri 2022</td>
-              <td>
-                <a href="#">saurav@gmail.com</a>
-              </td>
-              <td>03/10/2022</td>
-              <td className="pd">Pending</td>
-            </tr>
-            <tr>
-              <td>Surila Singer</td>
-              <td>Ajit</td>
-              <td>Republic Day 2022</td>
-              <td>
-                <a href="#">ajit@gmail.com</a>
-              </td>
-              <td>26/01/2023</td>
-              <td className="ap">Approved</td>
-            </tr>
-
-            <tr>
-              <td>KaviOp</td>
-
-              <td>Priyansh</td>
-              <td>KaviMahotsav 2022</td>
-              <td>
-                <a href="#">kpd@gmail.com</a>
-              </td>
-              <td>18/12/2022</td>
-              <td className="pd">Pending</td>
-            </tr>
-
-            <tr>
-              <td>Let's Nacho</td>
-              <td>Amin</td>
-              <td>Independent Day 2022</td>
-              <td>
-                <a href="#">amin@gmail.com</a>
-              </td>
-              <td>15/08/2023</td>
-              <td className="ap">Approved</td>
-            </tr>
-            <tr>
-              <td>The Engineerzzz</td>
-              <td>Virengiri</td>
-              <td>Engineer's Day 2022</td>
-              <td>
-                <a href="#">Virengiri@gmail.com</a>
-              </td>
-              <td>15/09/2022</td>
-              <td className="ap">Approved</td>
-            </tr>
-            <tr>
-              <td>KaviOp</td>
-
-              <td>Priyansh</td>
-              <td>KaviMahotsav 2022</td>
-              <td>
-                <a href="#">kpd@gmail.com</a>
-              </td>
-              <td>18/12/2022</td>
-              <td className="pd">Pending</td>
-            </tr>
-
-            <tr>
-              <td>Let's Nacho</td>
-              <td>Amin</td>
-              <td>Independent Day 2022</td>
-              <td>
-                <a href="#">amin@gmail.com</a>
-              </td>
-              <td>15/08/2023</td>
-              <td className="ap">Approved</td>
-            </tr>
-            <tr>
-              <td>The Engineerzzz</td>
-              <td>Virengiri</td>
-              <td>Engineer's Day 2022</td>
-              <td>
-                <a href="#">Virengiri@gmail.com</a>
-              </td>
-              <td>15/09/2022</td>
-              <td className="ap">Approved</td>
-            </tr>
+            {user.length != 0 ? (
+              user.map((us) => {
+                return (
+                  <tr>
+                    <td>{us.gname}</td>
+                    <td>{us.name}</td>
+                    <td>{us.TOP}</td>
+                    <td>
+                      <a href="#">{us.email}</a>
+                    </td>
+                    <td>{us.date}</td>
+                    <td className="pd">{us.officer}</td>
+                  </tr>
+                );
+              })
+            ) : (
+              <p>no data</p>
+            )}
           </tbody>
         </table>
       </div>

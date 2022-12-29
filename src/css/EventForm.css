@@ -52,32 +52,32 @@
   /* border: 3px solid rgb(64, 0, 255); */
   align-items: center;
   justify-content: space-around !important;
-  background: #1e283e;
+  background: var(--dark2);
   border: 1.05px solid transparent;
-  transition: 0.3s ease-in-out !important;
+  transition: border 0.3s ease-in-out !important;
 }
 .tx {
-  background: #1e283e;
+  background: var(--dark2);
   width: 220px;
-  color: whitesmoke;
+  color: var(--color2d);
   flex-shrink: 0;
   padding: 15px;
 }
 .input {
-  background: #151b2a;
-  transition: 0.3s ease-in-out !important;
+  background: var(--dark1);
+  transition: border 0.3s ease-in-out !important;
 }
 .input .name,
 .msg {
   border: 1.05px solid transparent !important;
-  transition: 0.3s ease-in-out !important;
+  transition: border 0.3s ease-in-out !important;
 }
 
 .nn2:hover,
 .input .name:hover,
 .msg:hover {
   border-radius: 2px !important;
-  border: 1.05px solid whitesmoke !important;
+  border: 1.05px solid var(--color2d) !important;
 }
 .input select {
   display: flex;
@@ -86,9 +86,9 @@
   width: 100%;
   margin-bottom: 25px;
   height: fit-content;
-  background: #1e283e;
+  background: var(--dark2);
   padding: 15px;
-  color: whitesmoke;
+  color: var(--color2d);
   margin: 0;
   font-family: 'Alegreya', sans-serif;
   font-size: 1.05rem;

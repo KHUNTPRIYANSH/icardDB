@@ -10,7 +10,7 @@ table {
   border-collapse: collapse;
   border-radius: 5px;
   overflow: hidden;
-  color: whitesmoke !important;
+  color: var(--color2d) !important;
 }
 
 th {
@@ -19,8 +19,8 @@ th {
 
 thead {
   font-weight: bold;
-  color: #fff;
-  background: #2e2685;
+  color: whitesmoke;
+  background: var(--tab-head);
   /* background: linear-gradient(to right, #4b00e0e0, #8d2de2e0); */
 }
 /* tbody tr:hover td {
@@ -45,11 +45,11 @@ td {
 }
 
 a {
-  color: #ffffff;
+  color: var(--color2d) fff;
 }
 .pd {
   /* background-color: rgb(241, 185, 28) !important; */
-  color: gold;
+  color: var(--gold1);
 }
 .ap {
   /* background-color: rgb(99, 234, 32) !important; */
@@ -103,12 +103,12 @@ a {
 }
 .filter {
   /* background: rgb(251, 251, 251); */
-  background: #1f2940;
+  background: var(--dark2);
   width: auto;
   height: auto;
   padding: 12px;
   margin-bottom: 25px;
-  color: whitesmoke;
+  color: var(--color2d);
   overflow: hidden !important;
   border-radius: 7px;
   border: 1px solid rgb(183, 183, 183);
@@ -133,18 +133,18 @@ a {
 .hid-sec button {
   background: transparent;
   border: none;
-  color: whitesmoke;
+  color: var(--color2d);
   text-transform: capitalize;
   border-radius: 3px;
   font-weight: 400;
   font-size: 0.8rem;
   border: 1px solid rgb(211, 211, 211) !important;
   padding: 5px 20px;
-  transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out !important;
 }
 .hid-sec button:hover {
-  background: white;
-  color: #121212;
+  background: var(--gold2);
+  color: var(--color1d);
 }
 .event-sec {
   height: auto;
@@ -156,23 +156,23 @@ a {
   /* margin-top: 50px; */
 }
 .e-title {
-  color: white;
+  color: var(--color2d);
   font-size: 2.2rem;
   font-weight: bolder;
   margin: 7px 0;
 }
 .e-sub-title {
-  color: #ffffff;
+  color: var(--color2d) fff;
   font-size: 1rem;
   font-weight: 500;
 }
 tbody > tr {
-  background: #1f2940;
+  background: var(--dark2);
   transition: 0.15s ease-in-out;
 }
 tbody > tr:hover {
-  background: #25314d;
+  background: var(--dark3);
 }
 #golden {
-  color: #ffc107;
+  color: var(--gold1);
 }
