@@ -15,6 +15,7 @@ import EventForm from "./EventForm";
 import ProgressCheck from "./ProgressCheck";
 import ArtistSignIn from "./ArtistSignIn";
 import ArtUp from "./ArtUp";
+import Calendar from "./Calendar";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -33,6 +34,8 @@ function App() {
                 <main>
                   <Menu />
                   <div id="router">
+                    <Calendar />
+                    <Charts />
                     <EventForm />
                     <ProgressCheck />
                     <Artists />
