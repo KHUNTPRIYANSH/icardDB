@@ -15,6 +15,7 @@ import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import ModeIcon from "@mui/icons-material/Mode";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
+import MaleIcon from "@mui/icons-material/Male";
 const EventForm = () => {
   return (
     <div>
@@ -52,6 +53,19 @@ const EventForm = () => {
               className="name"
               placeholder="Contact Number"
             />
+          </div>{" "}
+          <div className="input">
+            <label className="icon">
+              <MaleIcon />
+            </label>
+            <select className="name">
+              <option value="-1" selected>
+                Select Gender
+              </option>
+              <option value="1">Male</option>
+              <option value="2">Female</option>
+              <option value="3">Other</option>
+            </select>
           </div>
           <div className="input">
             <label className="icon">
@@ -79,7 +93,6 @@ const EventForm = () => {
               placeholder="Theme of Performance"
             />
           </div>
-
           <div className="input">
             <label className="icon">
               <FestivalIcon />
@@ -97,7 +110,6 @@ const EventForm = () => {
               <option value="Mohiniattam">Mohiniattam</option>
             </select>
           </div>
-
           <div className="inmsg">
             <label className="icon msicon">
               <EmojiEventsIcon />

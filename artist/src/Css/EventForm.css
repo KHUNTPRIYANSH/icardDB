@@ -94,3 +94,6 @@
   font-size: 1.05rem;
   border: transparent;
 }
+.message {
+  padding: 0 10vw;
+}

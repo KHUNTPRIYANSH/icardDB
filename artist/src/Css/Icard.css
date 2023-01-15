@@ -33,14 +33,17 @@
 }
 .id-title h1 {
   font-size: 20px;
+  color: whitesmoke !important;
 }
 
 .id-title h2 {
   font-size: 18px;
+  color: whitesmoke !important;
 }
 .id-title h3 {
   font-size: 14px;
   font-weight: 200;
+  color: whitesmoke !important;
 }
 .id-info {
   /* background-color: limegreen; */
@@ -50,6 +53,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: rgb(11, 11, 11);
   gap: 30px;
   background-color: rgb(235, 231, 238);
 }
@@ -72,10 +76,12 @@
 .id-info .right .id-field label {
   font-size: 1rem;
   font-weight: 550;
+  color: rgb(11, 11, 11) !important;
 }
 .id-info .right .id-field .val {
   font-size: 1rem;
   font-weight: 300;
+  color: rgb(11, 11, 11) !important;
 }
 .ID {
   width: 100%;

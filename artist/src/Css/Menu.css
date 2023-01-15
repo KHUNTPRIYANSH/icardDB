@@ -70,3 +70,25 @@ nav .nav-links img {
     display: none;
   }
 }
+#art-nav header {
+  font-size: 1.5rem !important;
+  display: flex;
+  align-items: center;
+  color: var(--color2d);
+  gap: 7px;
+}
+#art-nav {
+  color: var(--color2d);
+}
+#art-nav #logo {
+  font-size: 2rem;
+  color: var(--gold1) !important;
+}
+#art-nav #linkzz {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-end;
+  margin-right: 50px;
+}

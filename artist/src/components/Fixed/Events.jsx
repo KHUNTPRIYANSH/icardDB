@@ -14,6 +14,7 @@ const Events = () => {
             </div>
           </center>
         </header>
+
         <section>
           <div className="e-list">
             <Tilt
