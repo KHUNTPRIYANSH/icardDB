@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div className="Home">
+    <div className="Home " id="H1">
       {/* <img src="../../server/images/1665120495660.jpg" alt="" /> */}
       <div className="h-left">
         <h1 className="home-t">

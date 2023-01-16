@@ -31,8 +31,10 @@ function App() {
             element={
               <div id="art-site">
                 <Menu />
-                <Home />
-                <About />
+                <div className="bbbbb">
+                  <Home />
+                  <About />
+                </div>
                 <Events />
                 <EventForm />
                 <Icard />

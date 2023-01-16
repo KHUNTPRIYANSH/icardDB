@@ -53,7 +53,7 @@ const EventForm = () => {
               className="name"
               placeholder="Contact Number"
             />
-          </div>{" "}
+          </div>
           <div className="input">
             <label className="icon">
               <MaleIcon />

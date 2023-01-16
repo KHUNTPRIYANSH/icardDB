@@ -39,11 +39,11 @@ const Menu = () => {
           My-ID
         </header>
         <div id="linkzz">
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Events</a>
-          <a href="#">Progress</a>
-          <a href="#">Contact</a>
+          <a href="#H1">Home</a>
+          <a href="#H2">About</a>
+          <a href="#H3">Events</a>
+          <a href="#H4">Progress</a>
+          <a href="#H5">Contact</a>
         </div>
         <div className="nav-links">
           <LightModeOutlinedIcon id="light" onClick={themeSwitch} />

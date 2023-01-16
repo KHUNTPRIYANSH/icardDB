@@ -1,16 +1,16 @@
-nav {
-  background: var(--dark2);
+#art-nav {
   padding: 15px 35px;
   display: flex;
   align-items: center;
-  position: sticky;
-  top: 0;
   background: var(--dark2-t);
   backdrop-filter: blur(5px);
   justify-content: space-between;
   border-bottom: 0.5px solid var(--bc-w);
   min-height: 80px;
   z-index: 1111;
+  position: sticky;
+  width: 100vw;
+  top: 0px;
 }
 nav .nav-links img {
   height: 45px;

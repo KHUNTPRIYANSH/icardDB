@@ -9,8 +9,8 @@
   --dark3: #25314d;
   --color1d: #191923;
   --color2d: whitesmoke;
-  --gray: rgb(190, 190, 190);
-  --gray2: rgb(216, 216, 216);
+  --gray: rgb(240, 240, 240);
+  --gray2: rgb(236, 236, 236);
   --tab-head: #2e2685;
   --id: #2e2685;
   --bc-w: rgba(245, 245, 245, 0.409);
@@ -40,11 +40,19 @@
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
+  scroll-behavior: smooth;
   color: var(--color2d);
   /* transition: all 0s !important; */
 }
 body {
+  width: 100vw !important;
+  /* overflow-x: hidden !important; */
   background-color: var(--dark1);
+  height: auto;
+}
+html {
+  width: 100vw !important;
+  overflow-x: hidden !important;
 }
 .gold,
 #logo {
@@ -56,6 +64,39 @@ body {
   gap: 5vh;
 }
 /*=============home===========-*/
+.bbbbb {
+  position: relative;
+  overflow: hidden;
+}
+.bbbbb::before {
+  content: '';
+  position: absolute;
+  width: 110%;
+  height: 120%;
+  top: -20%;
+  left: -10%;
+  z-index: -1;
+  background: url('https://raw.githubusercontent.com/KHUNTPRIYANSH/site_photos/main/grad/22.png');
+  background-size: 120%;
+  background-position: center 100px;
+  background-repeat: no-repeat;
+  transform: rotate(17deg);
+}
+/* .bbbbb::before {
+  content: '';
+  position: absolute;
+  width: 120%;
+  height: 180%;
+  top: 0%;
+  left: 0%;
+  z-index: -1;
+  background: url('https://raw.githubusercontent.com/KHUNTPRIYANSH/site_photos/main/grad/11.png');
+  background: url('https://raw.githubusercontent.com/KHUNTPRIYANSH/site_photos/main/bg2.png');
+  background-size: 120%;
+  background-position: center 100px;
+  background-repeat: no-repeat;
+  transform: rotate(-15deg);
+} */
 .Home {
   height: auto;
   width: 100vw;
@@ -63,16 +104,15 @@ body {
   justify-content: space-between;
   align-items: center;
   min-height: 80vh;
+  /* margin-top: 10vh; */
   /* padding: 0 5vw 0 10vw !important; */
-  background-position: bottom right;
-  background-repeat: no-repeat;
-  background-size: cover;
   padding: 0 7vw 0 10vw;
-  background-color: var(--dark1);
+  /* background-color: var(--dark1); */
 }
 .gray {
   /* color: rgb(35, 35, 35); */
-  color: var(--gray);
+  /* color: var(--gray); */
+
   width: 90%;
 }
 .Home .h-right {
@@ -185,15 +225,23 @@ button {
   position: relative;
   bottom: 60px;
 }
-@media only screen and (max-width: 870px) {
+@media only screen and (max-width: 930px) {
   /*=============home===========-*/
+  .bbbbb {
+    position: relative;
+    overflow: hidden;
+  }
+  .bbbbb::before {
+    content: '';
+    background: none;
+  }
   .Home {
     flex-direction: column;
     justify-content: center !important;
     margin-bottom: 50px;
     min-height: fit-content !important;
     width: 100vw;
-    margin-top: 20vh;
+    margin-top: 10vw;
     gap: 0 !important;
   }
   .Home .h-left {
@@ -229,7 +277,7 @@ button {
     height: auto;
     width: 100vw;
 
-    background: white !important;
+    /* background: white !important; */
   }
   .about .a-left {
     /* background-color: green; */
@@ -237,10 +285,51 @@ button {
   }
 
   .a-right {
-    height: 85vh !important;
-    width: 75vw !important;
-    min-width: 440px;
+    height: 75vh;
+    width: 75vw;
+    min-width: 300px;
     overflow: hidden;
     border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /*--------------------event------------------*/
+  .eee .e-list {
+    justify-content: center;
+  }
+  /*----------------progress-------------------*/
+  .prog {
+    flex-direction: column;
+    gap: 25px;
+  }
+  .prog input {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 575px) {
+  #art-nav #linkzz {
+    display: none;
+  }
+  #art-nav {
+    /* display: none; */
+    position: sticky;
+    top: 0;
+  }
+  .Home {
+    gap: 10vh !important;
+  }
+  .Home .h-right img {
+    transform: scale(1.35);
+  }
+  .a-right {
+    height: 55vh;
+    width: 75vw;
+  }
+  /*--------------forms---------------*/
+  .message,
+  .pro-sec {
+    padding: 0;
   }
 }

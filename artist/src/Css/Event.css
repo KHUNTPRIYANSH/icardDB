@@ -93,7 +93,7 @@
   /* background-color: crimson; */
   display: flex;
   align-items: center !important;
-  justify-content: center !important;
+  justify-content: center;
   gap: 50px;
   background-color: var(--dark3);
 }

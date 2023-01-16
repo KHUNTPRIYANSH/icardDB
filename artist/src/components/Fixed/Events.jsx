@@ -3,7 +3,7 @@ import Tilt from "react-parallax-tilt";
 import "../../Css/Event.css";
 const Events = () => {
   return (
-    <div className="eee">
+    <div className="eee" id="H3">
       <div>
         <header className="event-sec">
           <center>
