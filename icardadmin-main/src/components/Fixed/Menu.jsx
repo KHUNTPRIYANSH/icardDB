@@ -8,6 +8,10 @@ const Menu = () => {
   let colTheme = document.getElementById("light-t");
   if (colTheme) {
     console.log(colTheme);
+    // document.documentElement.style.setProperty('--gold1', 'green');
+    // let colo = document.getElementById('light-t');
+    // console.log(colo)
+    // colo.style.setProperty('--dark1',`${colTheme}`)
   }
   const [theme, setTheme] = useState("light-t");
   const themeSwitch = () => {
@@ -41,6 +45,7 @@ const Menu = () => {
             id=""
           />
           <SearchIcon />
+          {/* <button id="toglemenu">Menu</button> */}
         </div>
         <div className="nav-links">
           <LightModeOutlinedIcon id="light" onClick={themeSwitch} />

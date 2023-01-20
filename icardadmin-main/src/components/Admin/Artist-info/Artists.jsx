@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../../Css/Artist.css";
+import ArtistInfo from "./ArtistInfo";
 // import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-const Artists = () => {
+const Artists = (props) => {
+  // const admin = "clerk";
+  const { backend, admin, setId, islogin } = props;
   const [user, setUser] = useState([]);
   const [search, setSearch] = useState("");
   const [sdate, setSdate] = useState("");
-  const admin = "clerk";
   const pagesize = 3;
   const [start, setStart] = useState(0);
   const [totalpage, setTotalpage] = useState(0);
@@ -14,10 +17,13 @@ const Artists = () => {
   const [tsort, setTsort] = useState("get");
   const [isdata, setIsdata] = useState(true);
   const [finaluser, setfinaluser] = useState([]);
+  const [aprfil, setAprfil] = useState(false);
+  const [aop, setAop] = useState("approved");
+  const nav = useNavigate();
 
   let ar = [];
-  const countdoc = async () => {
-    const res = await fetch(`http://localhost:8080/count/${admin}`, {
+  const countdoc = async (apr) => {
+    const res = await fetch(`${backend}/count/${apr}/${admin}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -37,7 +43,31 @@ const Artists = () => {
     setSearch("");
     setSdate("");
     const data = await fetch(
-      `http://localhost:8080/${tsort}/${admin}/${start}/${pagesize}`,
+      `${backend}/${tsort}/${admin}/${start}/${pagesize}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const res = await data.json();
+    if (res.admindata.length == 0) {
+      setIsdata(false);
+      setUser([]);
+    } else {
+      setIsdata(true);
+      setUser(res.admindata);
+      setfinaluser(res.admindata);
+    }
+    // console.log(res.admindata);
+  };
+  const getuseraprfil = async (start, ap) => {
+    setIssearch(false);
+    setSearch("");
+    setSdate("");
+    const data = await fetch(
+      `${backend}/get/${ap}/${admin}/${start}/${pagesize}`,
       {
         method: "GET",
         headers: {
@@ -57,9 +87,8 @@ const Artists = () => {
     // console.log(res.admindata);
   };
   const getsearch = async (src) => {
-    // console.log("search");
     setIssearch(true);
-    const data = await fetch(`http://localhost:8080/get/${admin}/${src}`, {
+    const data = await fetch(`${backend}/get/${admin}/${src}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -73,15 +102,10 @@ const Artists = () => {
       setIsdata(true);
       setUser(res.admindata);
     }
-    // setUser(user.filter((obj)=>{
-
-    //     return obj.name=={src};
-
-    // }))
   };
   const searchByDate = async (dt) => {
     setIssearch(true);
-    const data = await fetch(`http://localhost:8080/date/${admin}`, {
+    const data = await fetch(`${backend}/date/${admin}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -101,42 +125,50 @@ const Artists = () => {
   };
 
   const getapproved = async () => {
-    let newuser = [];
-    let srch = finaluser;
-    for (let i = 0; i < srch.length; i++) {
-      if (srch[i].PEON == "Approved") {
-        newuser.push(srch[i]);
-      }
-    }
-    setUser(newuser);
+    setAprfil(true);
+    setAop("approved");
+    countdoc("approved");
+    getuseraprfil(0, "approved");
+    setTsort("get");
   };
   const getpending = async () => {
-    let newuser = [];
-    let srch = finaluser;
-    for (let i = 0; i < srch.length; i++) {
-      if (srch[i].PEON == "Pending") {
-        newuser.push(srch[i]);
-      }
-    }
-    setUser(newuser);
+    setAprfil(true);
+    setAop("pending");
+    countdoc("pending");
+    getuseraprfil(0, "pending");
+    setTsort("get");
   };
 
   const sortbyName = async () => {
+    aprfil(false);
     setTsort("name");
     getuser(0, "name");
   };
   const sortbyTime = async () => {
+    setAprfil(false);
     setTsort("time");
     getuser(0, "time");
   };
   const sortbyTimed = async () => {
+    setAprfil(false);
     setTsort("timed");
     getuser(0, "timed");
   };
   let pgno = 0;
+  const opendetail = (index) => {
+    setId(index._id);
+    setTimeout(() => {
+      nav("/admin/artinfo");
+    }, 500);
+  };
+
   useEffect(() => {
-    countdoc();
-    getuser(0, "get");
+    if (!islogin) {
+      nav("/signIn");
+    } else {
+      countdoc("all");
+      getuser(0, "get");
+    }
   }, []);
   return (
     <div>
@@ -158,20 +190,48 @@ const Artists = () => {
             style={{ display: "flex", alignItems: "center" }}
           >
             <div>
-              <button onClick={sortbyName}>SortbyName </button>
-              <button onClick={sortbyTime}>Sortbytime </button>
-              <button onClick={sortbyTimed}>Sortbytime-dsc </button>
+              <button
+                onClick={sortbyName}
+                style={{
+                  backgroundColor: `${
+                    tsort == "name" ? "var(--gold2)" : "unset"
+                  }`,
+                }}
+              >
+                SortbyName{" "}
+              </button>
+              <button
+                onClick={sortbyTime}
+                style={{
+                  backgroundColor: `${
+                    tsort == "time" ? "var(--gold2)" : "unset"
+                  }`,
+                }}
+              >
+                Sortbytime{" "}
+              </button>
+              <button
+                onClick={sortbyTimed}
+                style={{
+                  backgroundColor: `${
+                    tsort == "timed" ? "var(--gold2)" : "unset"
+                  }`,
+                }}
+              >
+                Sortbytime-dsc
+              </button>
             </div>
-
             <input
               placeholder="seach by date"
+              // style={{ backgroundColor: "transparent", color: "white" }}
               className="ftr-src"
-              type="text"
+              type="date"
               value={sdate}
               onChange={(e) => {
                 e.preventDefault();
                 searchByDate(e.target.value);
                 setSdate(e.target.value);
+                console.log(e.target.value);
               }}
             />
             <input
@@ -185,13 +245,50 @@ const Artists = () => {
               placeholder="search here"
               type="search"
             />
-            <button onClick={getuser}>reset</button>
+            <button
+              onClick={() => {
+                setTsort("get");
+                setAprfil(false);
+                getuser(0, "get");
+              }}
+            >
+              reset
+            </button>
 
-            <button onClick={getuser} style={{ marginLeft: "50px" }}>
+            <button
+              onClick={() => {
+                setAprfil(false);
+                countdoc("all");
+                getuser(0, "get");
+              }}
+              style={{
+                backgroundColor: `${
+                  aprfil && aop == "all" ? "var(--gold2)" : "unset"
+                }`,
+              }}
+            >
               All
             </button>
-            <button onClick={getapproved}>Approved</button>
-            <button onClick={getpending}>Pending</button>
+            <button
+              onClick={getapproved}
+              style={{
+                backgroundColor: `${
+                  aprfil && aop == "approved" ? "var(--gold2)" : "unset"
+                }`,
+              }}
+            >
+              Approved
+            </button>
+            <button
+              onClick={getpending}
+              style={{
+                backgroundColor: `${
+                  aprfil && aop == "pending" ? "var(--gold2)" : "unset"
+                }`,
+              }}
+            >
+              Pending
+            </button>
           </div>
         </div>
         <table>
@@ -210,15 +307,45 @@ const Artists = () => {
             {user.length != 0 ? (
               user.map((us) => {
                 return (
-                  <tr>
+                  <tr
+                    onClick={(d) => {
+                      d.preventDefault();
+                      opendetail(us);
+                    }}
+                  >
                     <td>{us.gname}</td>
-                    <td>{us.name}</td>
-                    <td>{us.TOP}</td>
+                    <td>{us.name[0].name}</td>
+                    <td>{us.eventName}</td>
                     <td>
-                      <p href="#">{us.email}</p>
+                      <p href="#">{us.name[0].email}</p>
                     </td>
-                    <td>{us.date}</td>
-                    <td className="pd">{us.officer}</td>
+                    <td>
+                      {us.applyDay + "/" + us.applyMonth + "/" + us.applyYear}
+                    </td>
+                    <td
+                      className="pd"
+                      style={{
+                        display: `${admin == "clerk" ? "flex" : "none"}`,
+                      }}
+                    >
+                      {us.PEON}
+                    </td>
+                    <td
+                      className="pd"
+                      style={{
+                        display: `${admin == "dydo" ? "flex" : "none"}`,
+                      }}
+                    >
+                      {us.officer}
+                    </td>
+                    <td
+                      className="pd"
+                      style={{
+                        display: `${admin == "commisioner" ? "flex" : "none"}`,
+                      }}
+                    >
+                      {us.commisioner}
+                    </td>
                   </tr>
                 );
               })
@@ -235,20 +362,24 @@ const Artists = () => {
             alignItems: "center",
           }}
         >
-          <h2 style={{ color: "white" }}>Pages: </h2>
+          <h2 style={{ color: "var(--color2d)" }}>Pages: </h2>
           {arr.map((e) => {
             return (
               <button
                 onClick={(f) => {
                   setStart(e * pagesize);
                   console.log(e);
-                  getuser(e * pagesize, "get");
+                  if (!aprfil) {
+                    getuser(e * pagesize, "get");
+                  } else {
+                    getuseraprfil(e * pagesize, aop);
+                  }
                 }}
                 style={{
                   margin: "5px",
                   padding: "5px",
                   background: `${
-                    e * pagesize == start ? "white" : "rgb(255,255,255,.3)"
+                    e * pagesize == start ? "white" : "var(--gold2)5,.3)"
                   }`,
                 }}
                 key={e}
@@ -259,6 +390,12 @@ const Artists = () => {
           })}
         </div>
       </div>
+
+      {/* <br />
+      <br />
+      <div style={{display:`${showartist?"unset":"none"}`}}>
+        <ArtistInfo artist={artistdetail} lead = {lead}/>
+      </div> */}
     </div>
   );
 };

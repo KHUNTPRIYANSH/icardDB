@@ -138,14 +138,13 @@ a {
   border-radius: 3px;
   font-weight: 400;
   font-size: 0.8rem;
-  border: 1px solid rgb(211, 211, 211);
+  border: 1px solid rgb(211, 211, 211) !important;
   padding: 5px 20px;
   transition: 0.35s ease-in-out !important;
 }
 .hid-sec button:hover {
   background: var(--gold2);
-  color: var(--color1d);
-  border: 1px solid var(--gold2);
+  /* color: var(--color1d); */
 }
 .event-sec {
   height: auto;

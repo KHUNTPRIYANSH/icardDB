@@ -10,8 +10,17 @@ import PeopleIcon from "@mui/icons-material/People";
 import LogoutIcon from "@mui/icons-material/Logout";
 import EventIcon from "@mui/icons-material/Event";
 import "../../Css/Aside.css";
-import { Link } from "react-router-dom";
-const Aside = () => {
+import { Link, useNavigate } from "react-router-dom";
+const Aside = (props) => {
+  const {setIslogin}=props;
+  const nav= useNavigate();
+  const logout=()=>{
+    setIslogin(false);
+    localStorage.clear();
+    setTimeout(() => {
+      nav("/signIn");
+    }, 500);
+  }
   return (
     <>
       <aside>
@@ -55,9 +64,9 @@ const Aside = () => {
               Add Events
             </Link>
 
-            <Link className="links" to="/admin/add/bookmark">
+            {/* <Link className="links" to="/admin/add/bookmark">
               <EventIcon /> Add Bookmark
-            </Link>
+            </Link> */}
           </div>
           <div className="g-4">
             <div className="title">Approvement</div>
@@ -71,9 +80,9 @@ const Aside = () => {
             </Link> */}
           </div>
           <div className="g-5">
-            <Link to="/signIn" className="log-out">
+            <div className="log-out" onClick={logout}>
               <LogoutIcon id="gold" /> LogOut
-            </Link>
+            </div>
           </div>
         </section>
       </aside>

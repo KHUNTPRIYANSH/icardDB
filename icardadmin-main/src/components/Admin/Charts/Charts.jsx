@@ -1,4 +1,8 @@
 import React from "react";
+import { useState } from "react";
+
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ResponsiveContainer,
   LineChart,
@@ -17,6 +21,9 @@ import {
   ComposedChart,
 } from "recharts";
 import "../../../Css/Charts.css";
+
+
+
 const pdata = [
   { numWin: 5, numOfArtist: 5, name: "KPD", TOP: "garba", date: "03/08/2023" },
   {
@@ -42,12 +49,7 @@ const pdata = [
     date: "19/6/2023",
   },
 ];
-const yearGen = [
-  { yr: 2018, male: 125, female: 69, max: "Male" },
-  { yr: 2019, male: 225, female: 278, max: "Female" },
-  { yr: 2020, male: 325, female: 165, max: "Male" },
-  { yr: 2021, male: 125, female: 361, max: "Female" },
-];
+
 const comdata = [
   { siteUser: 380, month: "Jan", numOfEvent: 80, artist: 230 },
   { siteUser: 202, month: "Feb", numOfEvent: 20, artist: 30 },
@@ -112,7 +114,74 @@ const danceForm = [
     garba: 71,
   },
 ];
-const Charts = () => {
+
+const Charts = (props) => {
+  const {backend,islogin}=props;
+  const [apydata,setApydata]=useState([]);
+  const [mfdata,setMfdata]=useState([]);
+  const [ewdata,setEvdata]=useState([]);
+  const [eapy,setEapy]=useState([]);
+  const nav= useNavigate();
+  const getapplicationperyear = async ()=>{
+    const res  = await fetch(`${backend}/chart/peryear`,{
+      method:"GET",
+      headers:{
+        "content-type":"application/json"
+      }
+    })
+    const data =await res.json();
+    setApydata(data.dt);
+  }
+  const getmalefemale= async ()=>{
+    const res  = await fetch(`${backend}/chart/malefemale`,{
+      method:"GET",
+      headers:{
+        "content-type":"application/json"
+      }
+    })
+    const data =await res.json();
+    setMfdata(data.dt);
+  }
+  const geteventwise=async ()=>{
+    const res  = await fetch(`${backend}/chart/eventwise`,{
+      method:"GET",
+      headers:{
+        "content-type":"application/json"
+      }
+    })
+    const data =await res.json();
+    setEvdata(data.dt);
+  }
+  const geteapy = async ()=>{
+    const res  = await fetch(`${backend}/chart/eapy`,{
+      method:"GET",
+      headers:{
+        "content-type":"application/json"
+      }
+    })
+    const data =await res.json();
+    let original = data.dt;
+    let devent = data.dt2;
+    for(let i=0;i<original.length;i++){
+      let obj = {
+
+      }
+      for(let j=0;j<devent.length;j++){
+        obj = {...obj,event:'yes'};
+      }
+    }
+  }
+  useEffect(()=>{
+    if(!islogin){
+      nav("/signIn");
+    }else{
+
+      getapplicationperyear();
+      getmalefemale();
+      geteventwise();
+    }
+    // geteapy();
+  },[])
   return (
     <>
       <header className="event-sec">
@@ -125,33 +194,9 @@ const Charts = () => {
         </center>
       </header>
       <section id="charts">
-        <div id="ch1">
-          <h1>Line Chart</h1>
-          <p>Chart Of Individual Artist</p>
-          <ResponsiveContainer width="100%" aspect={1.5}>
-            <LineChart
-              data={pdata}
-              margin={{ left: -35, right: 7, top: 13, bottom: 5 }}
-            >
-              <YAxis stroke="#bfbfbf" />
-              <CartesianGrid strokeDasharray="5 3" stroke="#757575" />
-              <Tooltip />
-              <Legend />
-              <XAxis
-                dataKey="name"
-                stroke="#bfbfbf"
-                interval="preserveStartEnd"
-              />
-              <Line
-                /*type="monotone"*/
-                dataKey="numOfArtist"
-                strokeWidth={2}
-                stroke="#ffc107"
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-        <div id="ch2">
+        
+        
+        {/* <div id="ch2">
           <h1>Area Chart</h1>
           <p>Chart Of Artist Wining Competition</p>
           <ResponsiveContainer width="100%" aspect={1.5}>
@@ -160,7 +205,7 @@ const Charts = () => {
               margin={{ left: -35, right: 7, top: 13, bottom: 5 }}
             >
               <YAxis stroke="#bfbfbf" />
-              {/* <CartesianGrid /> */}
+              
               <Tooltip />
               <Legend />
               <XAxis
@@ -169,7 +214,7 @@ const Charts = () => {
                 interval="preserveStartEnd"
               />
               <Area
-                /*type="monotone"*/
+                
                 dataKey="numOfArtist"
                 strokeWidth={2}
                 type="monotone"
@@ -177,7 +222,7 @@ const Charts = () => {
                 fill="#f54c40"
               />
               <Area
-                /*type="monotone"*/
+                
                 dataKey="numWin"
                 strokeWidth={2}
                 type="monotone"
@@ -186,13 +231,13 @@ const Charts = () => {
               />
             </AreaChart>
           </ResponsiveContainer>
-        </div>
-        <div id="ch3">
+        </div> */}
+        {/* <div id="ch3">
           <h1>Multi Area Chart</h1>
           <p>Chart by number participants in each art form per year </p>
           <ResponsiveContainer width="100%" aspect={2.2}>
             <AreaChart
-              data={danceForm}
+              data={eapy}
               stackOffset="expand"
               margin={{
                 top: 15,
@@ -203,7 +248,7 @@ const Charts = () => {
             >
               <CartesianGrid />
               <XAxis
-                dataKey="yr"
+                dataKey="year"
                 interval="preserveStartEnd"
                 stroke="#bfbfbf"
               />
@@ -248,23 +293,66 @@ const Charts = () => {
               />
             </AreaChart>
           </ResponsiveContainer>
-        </div>
-
+        </div> */}
+        <div id="ch1">
+                  <h1>Line Chart</h1>
+                  <p>Chart of applications per year</p>
+                  <ResponsiveContainer width="100%" aspect={1.5}>
+                    <LineChart
+                      data={apydata}
+                      margin={{ left: -35, right: 7, top: 13, bottom: 5 }}
+                    >
+                      <YAxis stroke="#bfbfbf" />
+                      <CartesianGrid strokeDasharray="5 3" stroke="#757575" />
+                      <Tooltip />
+                      <Legend />
+                      <XAxis
+                        dataKey="_id"
+                        stroke="#bfbfbf"
+                        interval="preserveStartEnd"
+                      />
+                      <Line
+                        /*type="monotone"*/
+                        dataKey="applications"
+                        strokeWidth={2}
+                        stroke="#ffc107"
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
         <div id="ch4">
           <h1>Bar Chart</h1>
           <p>Chart by Artist Gender ratio per year</p>
           <ResponsiveContainer width="100%" aspect={1.5}>
             <BarChart
-              data={yearGen}
+              data={mfdata}
               margin={{ left: 5, right: 7, top: 13, bottom: 5 }}
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="yr" stroke="#bfbfbf" />
+              <XAxis dataKey="_id" stroke="#bfbfbf" />
               {/* <YAxis dataKey="max" /> */}
               <Tooltip />
               <Legend />
               <Bar dataKey="male" stackId="a" fill="#8884d8" />
               <Bar dataKey="female" stackId="a" fill="#82ca9d" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+        <div id="ch4">
+          <h1>Bar Chart</h1>
+          <p>Chart of applications per event</p>
+          <ResponsiveContainer width="100%" aspect={1.5}>
+            <BarChart
+              data={ewdata}
+              margin={{ left: 5, right: 7, top: 13, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="_id" stroke="#bfbfbf" />
+              {/* <YAxis dataKey="max" /> */}
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="applications" stackId="a" fill="#8884d8" />
+              
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -276,10 +364,10 @@ const Charts = () => {
               data={comdata}
               margin={{ left: -15, right: 10, top: 15, bottom: 5 }}
             >
-              {/* <CartesianGrid stroke="#f5f5f5" /> */}
+            
               <XAxis dataKey="month" scale="band" stroke="#bfbfbf" />
               <YAxis stroke="#bfbfbf" />
-              {/* <Tooltip /> */}
+             
               <Legend />
               <Area
                 type="monotone"
@@ -289,6 +377,7 @@ const Charts = () => {
                 strokeWidth={3}
               />
               <Bar dataKey="numOfEvent" barSize={20} fill="#ff2d55" />
+             
               <Line
                 type="monotone"
                 dataKey="siteUser"

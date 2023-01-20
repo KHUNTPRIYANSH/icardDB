@@ -1,12 +1,13 @@
-import React,{useRef,useState} from "react";
+import React,{useEffect, useRef,useState} from "react";
 import "../../../Css/Contact.css";
 import "../../../Css/EventForm.css";
 import FestivalOutlinedIcon from "@mui/icons-material/FestivalOutlined";
 import AddLocationAltRoundedIcon from "@mui/icons-material/AddLocationAltRounded";
 import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
 import DateRangeRoundedIcon from "@mui/icons-material/DateRangeRounded";
+import { useNavigate } from "react-router-dom";
 
-const Contact = () => {
+const Contact = (props) => {
   const inputRefTest = useRef(null);
   const ikUploadRefTest = useRef(null);
   const [ename,setEname]=useState("");
@@ -17,7 +18,7 @@ const Contact = () => {
   // const [imgsourse,setImagesourse]=useState('');
   const [filenam,setFileName]=useState("");
   const [submit,setSubmit]=useState("Add Event");
-  const backend = "http://localhost:8080"
+  const {backend,islogin}=props;
 
   const uploadfile = async ()=>{
     let fn  = filenam.split('.');
@@ -72,6 +73,12 @@ const Contact = () => {
     }
     setSubmit("Add Event");
   }
+  const nav= useNavigate();
+  useEffect(()=>{
+    if(!islogin){
+      nav("/signIn");
+    }
+  })
   return (
     <div>
       <header className="event-sec">

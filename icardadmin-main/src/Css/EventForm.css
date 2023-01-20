@@ -44,7 +44,7 @@
 }
 .wpp {
   display: flex;
-  gap: 25px;
+  /* gap: 25px; */
 }
 .nn2 {
   display: flex !important;
