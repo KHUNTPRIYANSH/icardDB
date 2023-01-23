@@ -33,12 +33,12 @@ window.addEventListener("load", () => {
     sparklesCount: 38,
     maxOpacity: 0.000001, // should be a number between [0 ... 1]
     texture1:
-      "https://raw.githubusercontent.com/KHUNTPRIYANSH/site_photos/main/grad/Screenshot%20(426).png", // texture displayed on mouse hover
+      "https://idcardgenrator.s3.ap-northeast-1.amazonaws.com/siteimage/Screenshot+(426).png", // texture displayed on mouse hover
     texture2:
-      "https://raw.githubusercontent.com/KHUNTPRIYANSH/site_photos/main/grad/Screenshot%20(426).png", // texture displayed on mouse hover
+      "https://idcardgenrator.s3.ap-northeast-1.amazonaws.com/siteimage/Screenshot+(426).png", // texture displayed on mouse hover
     // texture2:         "http://path_to_texture",      // texture displayed on mouse click
     texture3:
-      "https://raw.githubusercontent.com/KHUNTPRIYANSH/site_photos/main/grad/Screenshot%20(426).png", // texture displayed on sparkles
+      "https://idcardgenrator.s3.ap-northeast-1.amazonaws.com/siteimage/Screenshot+(426).png", // texture displayed on sparkles
   });
 });
 function App() {
