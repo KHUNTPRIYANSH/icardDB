@@ -476,6 +476,42 @@ button {
     margin: 15px !important;
     width: 92%;
   }
+  .loader {
+    margin: 10vh;
+    position: relative;
+    width: 10vw;
+    height: 10vw;
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(to top, #14ffe9, #ffeb3b, #ff00e0);
+    transition: all ease-in-out 1s;
+    animation: animate 0.5s linear infinite;
+  }
+  .loader:after {
+    content: '';
+    max-height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    bottom: 10px;
+    background: var(--dark1);
+    border-radius: 50%;
+  }
+  .loader span:nth-child(1) {
+    filter: blur(1px);
+  }
+  .loader span:nth-child(2) {
+    filter: blur(3px);
+  }
+  .loader span:nth-child(3) {
+    filter: blur(8px);
+  }
+  .loader span:nth-child(4) {
+    filter: blur(10px);
+  }
   /*--------------forms---------------*/
   .message,
   .pro-sec {
