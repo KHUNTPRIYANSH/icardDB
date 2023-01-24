@@ -248,9 +248,11 @@ function Scanner(props) {
             </div>
             <div className="i-r m-info">
               <div>
-                <p>{data.NoArtist}</p>
+                <p>Artists count : {data.NoArtist}</p>
+              <br />
+              <br />
               </div>
-              <div>
+              <div id="colmn">
                 {part.map((ob) => {
                   return (
                     <div>

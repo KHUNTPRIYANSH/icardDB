@@ -301,3 +301,8 @@
 
   /* background: var(--dark2); */
 }
+#colmn {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column !important;
+}
