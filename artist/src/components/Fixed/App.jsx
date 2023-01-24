@@ -30,7 +30,7 @@ window.addEventListener("load", () => {
     opacityDecrement: 0,
     speedExpFactor: 0.9,
     lineExpFactor: 0,
-    sparklesCount: 38,
+    sparklesCount: 30,
     maxOpacity: 0.000001, // should be a number between [0 ... 1]
     texture1:
       "https://idcardgenrator.s3.ap-northeast-1.amazonaws.com/siteimage/Screenshot+(426).png", // texture displayed on mouse hover

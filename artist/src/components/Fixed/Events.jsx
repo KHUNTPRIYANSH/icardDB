@@ -100,38 +100,30 @@ const Events = (props) => {
             ) : (
               events.map((cr) => {
                 return (
-                  <Tilt
-                    glareEnable={true}
-                    glareColor="#ebe7ee47"
-                    glarePosition="all"
-                    tiltMaxAngleX="13"
-                    tiltMaxAngleY="4"
-                  >
-                    <div className="card">
-                      <div className="card-img">
-                        <img src={cr.image} />
-                        <div className="time">
-                          {cr.eventDay} <br /> {cr.eventMonth}
-                        </div>
-                      </div>
-                      <div className="card-info">
-                        <div className="info-loc">{cr.destination}</div>
-                        <div className="info-t">{cr.name}</div>
-                        <div className="info-des">
-                          {cr.desc} <br />
-                        </div>
-                        <div
-                          id="join"
-                          style={{ cursor: "pointer" }}
-                          onClick={(e) => {
-                            handlejoin(cr);
-                          }}
-                        >
-                          Join Now
-                        </div>
+                  <div className="card">
+                    <div className="card-img">
+                      <img src={cr.image} />
+                      <div className="time">
+                        {cr.eventDay} <br /> {cr.eventMonth}
                       </div>
                     </div>
-                  </Tilt>
+                    <div className="card-info">
+                      <div className="info-loc">{cr.destination}</div>
+                      <div className="info-t">{cr.name}</div>
+                      <div className="info-des">
+                        {cr.desc} <br />
+                      </div>
+                      <div
+                        id="join"
+                        style={{ cursor: "pointer" }}
+                        onClick={(e) => {
+                          handlejoin(cr);
+                        }}
+                      >
+                        Join Now
+                      </div>
+                    </div>
+                  </div>
                 );
               })
             )}

@@ -497,7 +497,7 @@ button {
     right: 10px;
     left: 10px;
     bottom: 10px;
-    background: var(--dark1);
+    background: var(--dark1) !important;
     border-radius: 50%;
   }
   .loader span:nth-child(1) {

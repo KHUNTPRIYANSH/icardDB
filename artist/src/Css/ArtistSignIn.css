@@ -108,6 +108,8 @@
 }
 #ArtSignIn .right .data .gray {
   color: var(--gray);
+  /* width: 60% !important; */
+  flex: 1 !important;
 }
 @media (max-width: 1100px) {
   #ArtSignIn .left {

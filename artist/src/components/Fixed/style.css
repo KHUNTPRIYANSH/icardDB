@@ -56,7 +56,8 @@ body {
   right: 15px;
   left: 15px;
   bottom: 15px;
-  background: #240229;
+  background: var(--dark1) !important;
+  /* background: #240229; */
   border-radius: 50%;
 }
 @keyframes animate {
