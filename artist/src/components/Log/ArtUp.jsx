@@ -5,6 +5,7 @@ import "../../Css/ArtUp.css";
 import AddCardIcon from "@mui/icons-material/AddCard";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import swal from 'sweetalert'
 const ArtUp = (props) => {
   const nav = useNavigate();
   const {backend}=props;
@@ -32,7 +33,11 @@ const ArtUp = (props) => {
     })
     const data = await res.json();
     if(data.status=="ok"){
-      alert("successefully registerd");
+      swal({
+        title: "Successefully registerd!",
+        text: "",
+        icon: "success",
+      });
       nav("/signIn");
     }else{
       alert(data.status);
