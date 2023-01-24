@@ -163,6 +163,9 @@
   #optn {
     flex-direction: column;
   }
+   #reader {
+    width: 90vw !important;
+  }
   .event-sec {
     margin-top: 30px !important;
     padding: 0 25px;
