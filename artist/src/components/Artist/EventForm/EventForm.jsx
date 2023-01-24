@@ -17,6 +17,7 @@ import ModeIcon from "@mui/icons-material/Mode";
 import MaleIcon from "@mui/icons-material/Male";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert'
 
 const EventForm = (props) => {
   const { userId, eventId, backend, islogin } = props;
@@ -95,7 +96,7 @@ const EventForm = (props) => {
   const handlesubmit = async (e) => {
     e.preventDefault();
     if (!checkdetails()) {
-      alert("invalid credentials");
+      swal("invalid credentials!","", "error");
       return;
     }
     setSubmit("Just A Sec...");
