@@ -13,75 +13,76 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { height } from "@mui/system";
 import Loading from "../../Fixed/Loading";
+import swal from 'sweetalert'
 const Contact = (props) => {
-  const {backend,islogin,userId}=props;
-  
-  const [chats,setChats]=useState([]);
-  const [message,setMessage]=useState("");
-  const [submit,setSubmit]=useState("Submit");
+  const { backend, islogin, userId } = props;
+
+  const [chats, setChats] = useState([]);
+  const [message, setMessage] = useState("");
+  const [submit, setSubmit] = useState("Submit");
   const nav = useNavigate();
-  const getchat= async ()=>{
-    const res = await fetch(`${backend}/chat/user/${userId.id}`,{method:"GET"});
+  const getchat = async () => {
+    const res = await fetch(`${backend}/chat/user/${userId.id}`, { method: "GET" });
     const data = await res.json();
     setChats(data.chats);
-    const mb =document.getElementById('messagebox');
-    mb.scrollTo(0,mb.scrollHeight);
-   
-  }
-  const handlesubmit = async ()=>{
+    const mb = document.getElementById('messagebox');
+    mb.scrollTo(0, mb.scrollHeight);
 
-    if(message==""){
-      alert("invalid message");
+  }
+  const handlesubmit = async () => {
+
+    if (message == "") {
+      swal("invalid message!", "Please Enter a Message", "error");
       return;
     }
-    if(submit!="Submit"){
+    if (submit != "Submit") {
       return;
     }
     setSubmit("Submiting...")
-    const res = await fetch(`${backend}/chat/admin`,{
-      method:"POST",
-      headers:{
-        "content-type":"application/json"
+    const res = await fetch(`${backend}/chat/admin`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
       },
-      body:JSON.stringify({
-        id:userId.id,
+      body: JSON.stringify({
+        id: userId.id,
         message
       })
     });
     const data = await res.json();
-    if(data.status=="ok"){
-      setChats([...chats,data.chats]);
+    if (data.status == "ok") {
+      setChats([...chats, data.chats]);
       setTimeout(() => {
-        
-        const mb =document.getElementById('messagebox');
-        mb.scrollTo(0,mb.scrollHeight);
+
+        const mb = document.getElementById('messagebox');
+        mb.scrollTo(0, mb.scrollHeight);
       }, 500);
       setMessage("");
-    }else{
+    } else {
       alert(data.status);
     }
     setSubmit("Submit");
   }
-  const deletchat = async (id,index)=>{
-    const res = await fetch(`${backend}/chat/user/${id}`,{method:"DELETE"});
+  const deletchat = async (id, index) => {
+    const res = await fetch(`${backend}/chat/user/${id}`, { method: "DELETE" });
     const data = await res.json();
-    if(data.status=="ok"){
+    if (data.status == "ok") {
       getchat();
-    }else{
+    } else {
       alert(data.status);
     }
   }
-  useEffect(()=>{
-    if(islogin){
+  useEffect(() => {
+    if (islogin) {
       getchat();
-      window.scrollTo(0,400);
-    }else{
+      window.scrollTo(0, 400);
+    } else {
       nav("/")
     }
-  },[])
+  }, [])
   return (
-    <div id="H5" style={{minHeight:'100vh',marginBottom:"10px"}}>
-      <header className="event-sec" style={{position:"sticky",top:"70px"}}>
+    <div id="H5" style={{ minHeight: '100vh', marginBottom: "10px" }}>
+      <header className="event-sec" style={{ position: "sticky", top: "70px" }}>
         <div className="e-title">
           Artist {" "}
           <span id="golden">{userId.name}</span> {" "}
@@ -89,22 +90,22 @@ const Contact = (props) => {
         </div>
       </header>
       <div className="message">
-        <div style={{display:'flex',flexDirection:'column',height:"40vh",overflow:"scroll"}} id="messagebox" >
-          {chats.length==0?<Loading/> : chats.map((ct,index)=>{
-            return <div style={{display:'flex',justifyContent:`${ct.status?"end":"start"}`}}>
-              <p style={{margin:"10px",padding:"10px",backgroundColor:`${!ct.status?"rgb(255,255,255,.2)":"rgb(0,255,0,.2)"}`,maxWidth:"60vw",borderRadius:"5px"}}>{ct.message} {" "}
-               <span style={{cursor:"pointer",display:`${!ct.status?"none":"unset"}`}} onClick={()=>{deletchat(ct._id,index)}}>❎</span></p>
+        <div style={{ display: 'flex', flexDirection: 'column', height: "40vh", overflow: "scroll" }} id="messagebox" >
+          {chats.length == 0 ? <Loading /> : chats.map((ct, index) => {
+            return <div style={{ display: 'flex', justifyContent: `${ct.status ? "end" : "start"}` }}>
+              <p style={{ margin: "10px", padding: "10px", backgroundColor: `${!ct.status ? "rgb(255,255,255,.2)" : "rgb(0,255,0,.2)"}`, maxWidth: "60vw", borderRadius: "5px" }}>{ct.message} {" "}
+                <span style={{ cursor: "pointer", display: `${!ct.status ? "none" : "unset"}` }} onClick={() => { deletchat(ct._id, index) }}>❎</span></p>
             </div>
           })}
         </div>
-        
-        <form action="" className="contactus" style={{position:"sticky",bottom:"10px",marginTop:"-16px"}}>
+
+        <form action="" className="contactus" style={{ position: "sticky", bottom: "10px", marginTop: "-16px" }}>
           <div className="input" >
             <label className="icon">
               {" "}
               <NumbersIcon />
             </label>
-            <input type="text" value={message} onChange={(e)=>{setMessage(e.target.value)}} className="name" placeholder="Reply" />
+            <input type="text" value={message} onChange={(e) => { setMessage(e.target.value) }} className="name" placeholder="Reply" />
           </div>
           <div className="forbtn">
             <div className="btn" onClick={handlesubmit}>{submit}</div>
