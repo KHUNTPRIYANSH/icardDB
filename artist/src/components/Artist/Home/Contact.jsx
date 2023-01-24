@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { height } from "@mui/system";
 import Loading from "../../Fixed/Loading";
+import swal from 'sweetalert'
 
 const Contact = (props) => {
   const { backend, islogin, userId } = props;
@@ -37,7 +38,7 @@ const Contact = (props) => {
   };
   const handlesubmit = async () => {
     if (message == "") {
-      alert("invalid message");
+      swal("invalid message!","Please Enter a Message", "error");
       return;
     }
     if (submit != "Submit") {
