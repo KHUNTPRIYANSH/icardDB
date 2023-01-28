@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "../../../Css/Icard.css";
 import './Nicard.css';
 import Qrcode from './Qrcode'
@@ -9,6 +9,7 @@ import Tilt from "react-parallax-tilt";
 // import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useReactToPrint } from "react-to-print";
 
 const Icard = (props) => {
   const { backend, islogin, regId } = props;
@@ -44,36 +45,42 @@ const Icard = (props) => {
     gphoto: "#",
     img: "#",
   });
-  
+
   const [edt, setedt] = useState({});
   const nav = useNavigate();
-  const printDocument = async () => {
+  //   const printDocument = async () => {
 
-};
-  
+
+  // };
+  const componentRef = useRef();
+  const printDocument = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
+
   // First, import the jsPDF library
 
-// Next, select the element with the ID "myicard"
+  // Next, select the element with the ID "myicard"
 
-// const printDocument = () =>{
-//   let myIcard = document.getElementById('myPage');
+  // const printDocument = () =>{
+  //   let myIcard = document.getElementById('myPage');
 
-//   // Use html2canvas to render the element as an image
-//   html2canvas(myIcard).then(canvas => {
-//     // Get the image data from the canvas
-//     let imgData = canvas.toDataURL('image/png');
-    
-//     // Create a new PDF document
-//     let pdf = new jsPDF();
+  //   // Use html2canvas to render the element as an image
+  //   html2canvas(myIcard).then(canvas => {
+  //     // Get the image data from the canvas
+  //     let imgData = canvas.toDataURL('image/png');
 
-//     // Add the image data to the PDF
-//     pdf.addImage(imgData, 'PNG', 0, 0);
+  //     // Create a new PDF document
+  //     let pdf = new jsPDF();
 
-//     // Download the PDF
-//     pdf.save("myicard.pdf");
-//   });
-// }
-const getuserdt = async () => {
+  //     // Add the image data to the PDF
+  //     pdf.addImage(imgData, 'PNG', 0, 0);
+
+  //     // Download the PDF
+  //     pdf.save("myicard.pdf");
+  //   });
+  // }
+  const getuserdt = async () => {
     const res = await fetch(`${backend}/api/getstatus/${regId}`, {
       method: "GET",
       headers: {
@@ -134,7 +141,7 @@ const getuserdt = async () => {
   }, []);
   return (
     <div>
-      <div style={{padding:'20px'}}>
+      <div style={{ padding: '20px' }}>
         <div id="progress" className="progresscontener">
           <Tilt
             glareEnable={true}
@@ -181,66 +188,66 @@ const getuserdt = async () => {
         </div>
       </div>
 
-      <section className="ID" id="idcard" >
-      <div className="card" id="myPage">
-        <div className="content">
-          <div className="front" >
-            <div className="id-info">
-              <div className="id-TT">
-                <div className="dp">
-                  <img
-                    src={`${carddata.img}`}
-                    alt=""
-                  />
+      <section className="ID"  id="idcard" ref={componentRef} >
+        <div className="card"  id="myPage">
+          <div className="content" >
+            <div className="front" >
+              <div className="id-info">
+                <div className="id-TT">
+                  <div className="dp">
+                    <img
+                      src={`${carddata.img}`}
+                      alt=""
+                    />
+                  </div>
+                  <h1>{carddata.name[0].name}</h1>
+                  <h3>Artist</h3>
                 </div>
-                <h1>{carddata.name[0].name}</h1>
-                <h3>Artist</h3>
+                <div className="id-bot">
+                  <div className="id-bl">
+                    <h2>Group</h2>
+                    <h2>Members</h2>
+                    <h2>Gender</h2>
+                    <h2>Mail</h2>
+                    <h2>Phone</h2>
+                    <h2>EventName</h2>
+                    <h2>Vanue</h2>
+                    <h2 className="gold" id="big">Event-Date</h2>
+                  </div>
+                  <div className="id-br">
+                    <h2>: {carddata.gname}</h2>
+                    <h2>: {carddata.tnartist}</h2>
+                    <h2>: {carddata.name[0].gender}</h2>
+                    <h2>: {carddata.name[0].email}</h2>
+                    <h2>: {carddata.name[0].phoneNo} </h2>
+                    <h2>: {edt.name}</h2>
+                    <h2>: {edt.destination}</h2>
+                    <h2 id="big">: {edt.eventDay}-{edt.eventMonth}-{edt.eventYear}</h2>
+                  </div>
+                </div>
+                <div className="ftr"></div>
               </div>
-              <div className="id-bot">
-                <div className="id-bl">
-                  <h2>Group</h2>
-                  <h2>Members</h2>
-                  <h2>Gender</h2>
-                  <h2>Mail</h2>
-                  <h2>Phone</h2>
-                  <h2>EventName</h2>
-                  <h2>Vanue</h2>
-                  <h2 className="gold" id="big">Event-Date</h2>
-                </div>
-                <div className="id-br">
-                  <h2>: {carddata.gname}</h2>
-                  <h2>: {carddata.tnartist}</h2>
-                  <h2>: {carddata.name[0].gender}</h2>
-                  <h2>: {carddata.name[0].email}</h2>
-                  <h2>: {carddata.name[0].phoneNo} </h2>
-                  <h2>: {edt.name}</h2>
-                  <h2>: {edt.destination}</h2>
-                  <h2 id="big">: {edt.eventDay}-{edt.eventMonth}-{edt.eventYear}</h2>
-                </div>
+            </div>
+            <div className="back" >
+              <div className="fbtr"></div>
+              <div className="bk-t">
+                <Qrcode value={carddata._id} size={140}  />
+                <p style={{ color: "black", fontWeight: "700", margin: "13.5px 0" }}>ID : {carddata._id}</p>
               </div>
-              <div className="ftr"></div>
+              <div className="bk-txt">
+                <big> Terms and conditions </big>
+                <small
+                >This ID is given by the Ministry of Culture, Government of
+                  India, required for attending events, can be used in hospitals,
+                  bus & train.
+                </small>
+              </div>
             </div>
           </div>
-           <div className="back">
-             <div className="fbtr"></div>
-            <div className="bk-t">
-               <Qrcode value ={carddata._id} size={140}/>
-               <p style={{color :"black" , fontWeight: "700" , margin:"13.5px 0"}}>ID : {carddata._id}</p>
-            </div>
-            <div className="bk-txt">
-              <big> Terms and conditions </big>
-              <small
-                >This ID is given by the Ministry of Culture, Government of
-                India, required for attending events, can be used in hospitals,
-                bus & train.
-              </small>
-            </div>
-          </div> 
         </div>
-      </div>
-         {/* <button onClick={printDocument} className="btn">
+        <button onClick={printDocument} className="btn">
           Print
-        </button> */}
+        </button>
       </section>
     </div>
   );
