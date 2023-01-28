@@ -93,9 +93,14 @@ main {
 #router {
   padding: 50px;
   display: flex;
-  flex: 1;
+  /* flex: 1; */
   flex-direction: column;
   /* gap: 10vh; */
+}
+.ppp {
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
 }
 .btn {
   outline: none !important;
@@ -212,5 +217,5 @@ a {
 .welcome p {
   font-size: 1rem !important;
   letter-spacing: 1px;
-  width: 90%;
+  /* width: 90%; */
 }

@@ -13,7 +13,9 @@ import { Mycontext } from "./App";
 import "../../Css/Aside.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect,useContext } from "react";
-
+import CloseIcon from '@mui/icons-material/Close';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { IconButton } from "@mui/material";import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 const Aside = (props) => {
   const {setIslogin,admin}=props;
   const nav= useNavigate();
@@ -43,11 +45,14 @@ const Aside = (props) => {
     <>
       <aside id="aside">
         <header>
+          <div className="lg">
+
           <AddCardIcon id="logo" className="gold" />
           My-ID
-          <button id="closebtn" onClick={()=>{document.getElementById('aside').style.marginLeft="-270px";
+          </div>
+          <IconButton id="closebtn" onClick={()=>{document.getElementById('aside').style.marginLeft="-270px";
             document.getElementById('toggelaside').style.visibility="visible"
-            }}>close</button>
+            }}> <CloseIcon /> </IconButton>
         </header>
         <section className="profile">
           <div className="dp">
@@ -57,7 +62,7 @@ const Aside = (props) => {
             />
           </div>
           <div className="name">Priyansh Khunt</div>
-          <div className="type gray">Commissioner</div>
+          <div className="type gray" style={{color:"var(--gray2"}}>Admin</div>
         </section>
         <section className="menu-links">
           <div className="g-1">
@@ -85,12 +90,12 @@ const Aside = (props) => {
               Add Events
             </p>
             <Link className="links" to="/addAdmin" style={{display:`${admin=="commisioner"?"flex":"none"}`}}>
-              <FestivalIcon />
+             <ManageAccountsIcon />
               Add Admins
             </Link>
             <Link className="links" to="/addStaf" >
-              <FestivalIcon />
-              Add Staf
+              <PersonAddIcon />
+              Add Staff
             </Link>
 
             {/* <p className="links" >

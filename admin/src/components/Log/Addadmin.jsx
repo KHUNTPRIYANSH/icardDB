@@ -60,35 +60,27 @@ const Addadmin = (props) => {
             <form action="#">
               <h3>Role</h3>
               {/* <input type="text" placeholder="Enter your first and last name" /> */}
-              <p style={{cursor:'pointer'}} onClick={()=>{
+             <div id="sel-role">
+
+              <p  style={{cursor:'pointer'}} onClick={()=>{
                 setIsopen(true)
               }}>{role}</p>
-              <div style={{display:`${isopen?"unset":"none"}`}}>
+              <div  style={{display:`${isopen?"unset":"none"}`}}>
                 <p style={{cursor:'pointer'}} onClick={()=>{setRole("clerk"); setIsopen(false) }}>Clerk</p>
                 <p style={{cursor:'pointer'}} onClick={()=>{setRole("dydo"); setIsopen(false) }}>dydo</p>
                 <p style={{cursor:'pointer'}} onClick={()=>{setRole("commisioner"); setIsopen(false) }}>Commisioner</p>
               </div>
+              </div>
               <br />
               <h3>Id</h3>
-              <input value={id} onChange={(e)=>{setId(e.target.value)}} type="text" placeholder="abcd123@xyz.com" />
+              <input value={id} onChange={(e)=>{setId(e.target.value)}} type="text" placeholder="abcd123" />
               <h3>Password</h3>
-              <input value={password} onChange={(e)=>{setPassword(e.target.value)}}  type="password" placeholder="●●●●●●●●●●●" />
+              <input value={password} onChange={(e)=>{setPassword(e.target.value)}}  type="password" placeholder="●●●●●●●" />
               <button type="submit" className="btn" onClick={createac}>
                 Create Account
               </button>
             </form>
-            <div className="b-box">
-              <div className="btn">
-                SignUp With <FacebookRoundedIcon />
-              </div>
-              <div className="btn">
-                SignUp With <TwitterIcon />
-              </div>
-            </div>
-            <p>
-              <span className="gray">Already have an account?</span>
-              <Link to="/signIn">Sign In</Link>
-            </p>
+     
           </div>
         </div>
       </section>

@@ -133,19 +133,18 @@ aside > * {
   /* border: 0px; */
   /* font-weight: bold; */
 }
-#closebtn{
+#closebtn {
   display: none;
 }
-#aside{
+#aside {
   margin-left: 0;
 }
 @media all and (max-width: 950px) {
-  #aside{
+  #aside {
     margin-left: -270px;
-    transition: all .2s;
+    transition: all 0.2s;
   }
-  #closebtn{
+  #closebtn {
     display: unset;
   }
-  
 }

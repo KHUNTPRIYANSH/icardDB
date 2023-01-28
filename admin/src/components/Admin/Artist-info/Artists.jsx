@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../../Css/Artist.css";
 import Loading from '../../Fixed/Loading'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArtistInfo from "./ArtistInfo";
+import { IconButton } from "@mui/material";
 // import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 const Artists = (props) => {
   // const admin = "clerk";
@@ -171,6 +173,21 @@ const Artists = (props) => {
       getuser(0, "get");
     }
   }, []);
+// const [filter, setFilter] = useState(1);
+function showFilters(){
+//   console.log("clicked");
+//   if(filter === 0){
+//     document.getElementById("hid-sec").style.display = "flex !important"
+//     setFilter(1)
+//   }
+//   else{
+//     document.getElementById("hid-sec").style.display = "none"
+//     setFilter(0)
+//   }
+}
+//   useEffect(() => {
+//     document.getElementById("hid-sec") = filter;
+//   }, [filter]);
   return (
     <div>
       <header className="event-sec">
@@ -184,13 +201,21 @@ const Artists = (props) => {
       </header>
       <div className="t-box">
         <div className="filter" id="filter">
-          <div className="fil-title">Filter By Dance</div>
+          <div className="fil-title">
+            <div>
+            Filters
+            </div>
+            <IconButton style={{color:"var(--color2d)"}} onClick={showFilters}>
+
+            <ArrowDropDownIcon />
+            </IconButton>
+             </div>
           <div
             className="hid-sec"
             id="hid-sec"
             style={{ display: "flex", alignItems: "center" }}
           >
-            <div>
+            <div id="f-sort">
               <button
                 onClick={sortbyName}
                 style={{
@@ -222,10 +247,10 @@ const Artists = (props) => {
                 Sortbytime-dsc
               </button>
             </div>
-            <input
+    <div id="f-sort">        <input
               placeholder="seach by date"
               // style={{ backgroundColor: "transparent", color: "white" }}
-              className="ftr-src"
+              className="ftr-src ddddt"
               type="date"
               value={sdate}
               onChange={(e) => {
@@ -254,7 +279,8 @@ const Artists = (props) => {
               }}
             >
               reset
-            </button>
+            </button></div>
+<div id="f-sort">
 
             <button
               onClick={() => {
@@ -287,9 +313,10 @@ const Artists = (props) => {
                   aprfil && aop == "pending" ? "var(--gold2)" : "unset"
                 }`,
               }}
-            >
+              >
               Pending
             </button>
+              </div>
           </div>
         </div>
         <table>

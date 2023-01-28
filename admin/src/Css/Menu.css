@@ -48,21 +48,31 @@ nav .nav-links img {
 .nav-links img {
   margin-left: 25px;
 }
+.nav-links > * > * {
+  color: var(--color2d) !important;
+}
+.toggg,
+#closebtn {
+  border: none;
+  background: none;
+  outline: none;
+  color: var(--color2d) !important;
+}
 #light,
 #mail,
 #noti {
   transition: 0.15s ease-in-out;
 }
 #light:hover {
-  color: var(--gold1);
+  color: var(--gold1) !important;
 }
 #mail:hover {
-  color: crimson;
+  color: crimson !important;
 }
 #noti:hover {
-  color: limegreen;
+  color: limegreen !important;
 }
-#toggelaside{
+#toggelaside {
   display: none;
 }
 @media all and (max-width: 950px) {
@@ -73,9 +83,7 @@ nav .nav-links img {
     /* display: none; */
     margin-left: -270px;
   }
-  #toggelaside{
+  #toggelaside {
     display: flex;
   }
-  
-  
 }

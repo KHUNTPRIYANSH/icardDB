@@ -54,12 +54,7 @@ const Events = (props) => {
           <div className="e-list">
             {events.length===0? <div style={{width:"100vw"}} ><Loading/></div> :events.map((cr) => {
               return (
-                <Tilt
-                  glareEnable={true}
-                  glareColor="#ebe7ee47"
-                  glarePosition="all"
-                  tiltMaxAngleX="13"
-                  tiltMaxAngleY="4"
+                <div
                 >
                   <div className="card">
                     <div className="card-img">
@@ -86,7 +81,7 @@ const Events = (props) => {
                       Delete
                     </button>
                   </div>
-                </Tilt>
+                </div>
               );
             })}
           </div>
