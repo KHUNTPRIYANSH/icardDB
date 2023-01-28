@@ -4,6 +4,7 @@ import "../../Css/ArtistSignIn.css";
 import AddCardIcon from "@mui/icons-material/AddCard";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import swal from 'sweetalert'
 const ArtistSignIn = (props) => {
   const {backend,setIslogin,setAdmin}=props;
   const [email,setEmail]=useState("");
@@ -13,7 +14,7 @@ const ArtistSignIn = (props) => {
   const nav = useNavigate();
   const handlesubmit = async()=>{
     if(email=="" || password==""){
-      alert("Enter valid id password");
+      swal("Enter a valid id password", "", "warning");
       return;
     }
     setSubmit("Just A Sec...");
