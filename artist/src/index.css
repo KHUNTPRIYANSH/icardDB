@@ -153,6 +153,7 @@ button {
 }
 .pro-sec {
   padding: 0 10vw;
+  min-height: none !important;
 }
 /*===================event=====================*/
 .event-sec {

@@ -9,10 +9,13 @@ import NewspaperIcon from "@mui/icons-material/Newspaper";
 import PeopleIcon from "@mui/icons-material/People";
 import LogoutIcon from "@mui/icons-material/Logout";
 import EventIcon from "@mui/icons-material/Event";
+import { Mycontext } from "./App";
 import "../../Css/Aside.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect,useContext } from "react";
+
 const Aside = (props) => {
-  const {setIslogin}=props;
+  const {setIslogin,admin}=props;
   const nav= useNavigate();
   const logout=()=>{
     setIslogin(false);
@@ -21,12 +24,30 @@ const Aside = (props) => {
       nav("/signIn");
     }, 500);
   }
+  // const ft =()=>{
+  //   document.getElementById('aside').style.marginLeft="0"
+  // }
+  // const close = ()=>{
+  //   document.getElementById('aside').style.marginLeft="-270px"
+  // }
+  const {setToggle}=useContext(Mycontext);
+  const navfun=(des)=>{
+    if(document.getElementById('toggelaside').style.visibility==="hidden"){
+      setToggle(true);
+      document.getElementById('aside').style.marginLeft="-270px"
+    }
+    nav(des);
+  }
+
   return (
     <>
-      <aside>
+      <aside id="aside">
         <header>
           <AddCardIcon id="logo" className="gold" />
           My-ID
+          <button id="closebtn" onClick={()=>{document.getElementById('aside').style.marginLeft="-270px";
+            document.getElementById('toggelaside').style.visibility="visible"
+            }}>close</button>
         </header>
         <section className="profile">
           <div className="dp">
@@ -41,43 +62,51 @@ const Aside = (props) => {
         <section className="menu-links">
           <div className="g-1">
             <div className="title">Main</div>
-            <Link className="links" to="/">
+            <p onClick={()=>{navfun("/")}} className="links" >
               <DashboardOutlinedIcon />
               Index
-            </Link>
+            </p>
           </div>
           <div className="g-2">
             <div className="title">General</div>
-            <Link className="links" to="/admin/event-list">
+            <p onClick={()=>{navfun("/admin/event-list")}} className="links" >
               <FestivalOutlinedIcon />
               Event-List
-            </Link>
-            <Link className="links" to="/admin/charts">
+            </p>
+            <p onClick={()=>{navfun("/admin/charts")}} className="links">
               <InsertChartOutlinedIcon />
               Charts
-            </Link>
+            </p>
           </div>
           <div className="g-3">
             <div className="title">Add New</div>
-            <Link className="links" to="/admin/add/event">
+            <p onClick={()=>{navfun("/admin/add/event")}} className="links" >
               <FestivalIcon />
               Add Events
+            </p>
+            <Link className="links" to="/addAdmin" style={{display:`${admin=="commisioner"?"flex":"none"}`}}>
+              <FestivalIcon />
+              Add Admins
+            </Link>
+            <Link className="links" to="/addStaf" >
+              <FestivalIcon />
+              Add Staf
             </Link>
 
-            {/* <Link className="links" to="/admin/add/bookmark">
+            {/* <p className="links" >
               <EventIcon /> Add Bookmark
-            </Link> */}
+            </p> */}
           </div>
           <div className="g-4">
             <div className="title">Approvement</div>
-            <Link className="links" to="/admin/artist/table">
+            <p onClick={()=>{navfun("/admin/artist/table")}} className="links" >
               <PeopleIcon />
               Artists
-            </Link>
+            </p>
 
-            <Link to="/quarry" className="links">
+            <p onClick={()=>{navfun("/quarry")}}   className="links">
               <NewspaperIcon /> Querrys
-            </Link>
+            </p>
           </div>
           <div className="g-5">
             <div className="log-out" onClick={logout}>

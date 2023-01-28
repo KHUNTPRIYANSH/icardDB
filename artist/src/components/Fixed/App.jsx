@@ -47,7 +47,7 @@ function App() {
   const [userId, setUserId] = useState(null);
   const [eventId, setEventId] = useState(null);
   const [regId, setRegId] = useState(null);
-  const backend = "https://myid-wine.vercel.app";
+  const backend = "https://myid-veerengiri.vercel.app";
   return (
     <>
       <Router>
@@ -86,7 +86,7 @@ function App() {
                   userId={userId}
                   setRegId={setRegId}
                 />
-                <Footer />
+                {/* <Footer /> */}
               </div>
             }
           />
@@ -96,7 +96,7 @@ function App() {
               <div id="art-site">
                 <Menu islogin={islogin} setIslogin={setIslogin} />
                 <Icard backend={backend} islogin={islogin} regId={regId} />
-                <Footer />
+                {/* <Footer /> */}
               </div>
             }
           />
@@ -110,7 +110,7 @@ function App() {
                   islogin={islogin}
                   setEventId={setEventId}
                 />
-                <Footer />
+                {/* <Footer /> */}
               </div>
             }
           />
@@ -120,7 +120,7 @@ function App() {
               <div id="art-site">
                 <Menu islogin={islogin} setIslogin={setIslogin} />
                 <Contact backend={backend} islogin={islogin} userId={userId} />
-                <Footer />
+                {/* <Footer /> */}
               </div>
             }
           />
@@ -135,7 +135,7 @@ function App() {
                   userId={userId}
                   eventId={eventId}
                 />
-                <Footer />
+                {/* <Footer /> */}
               </div>
             }
           />

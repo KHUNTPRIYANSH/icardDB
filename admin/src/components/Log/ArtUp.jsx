@@ -11,7 +11,7 @@ const ArtUp = () => {
       <section id="ArtSignIn">
         <div className="left">
           <img
-            src="https://raw.githubusercontent.com/KHUNTPRIYANSH/site_photos/main/auppp.png"
+            src="https://idcardgenrator.s3.ap-northeast-1.amazonaws.com/siteimage/auppp.png"
             alt=""
             id="Aup"
           />

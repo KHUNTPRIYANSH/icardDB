@@ -96,6 +96,7 @@ aside > * {
 }
 
 .links {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -131,4 +132,20 @@ aside > * {
 
   /* border: 0px; */
   /* font-weight: bold; */
+}
+#closebtn{
+  display: none;
+}
+#aside{
+  margin-left: 0;
+}
+@media all and (max-width: 950px) {
+  #aside{
+    margin-left: -270px;
+    transition: all .2s;
+  }
+  #closebtn{
+    display: unset;
+  }
+  
 }

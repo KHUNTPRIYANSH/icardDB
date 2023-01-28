@@ -19,27 +19,34 @@ import Error404 from "../Fixed/Error404";
 import Welcome from "../Fixed/Welcome";
 import { useEffect } from "preact/hooks";
 import Querry from "../Admin/Artist-info/Querry";
+import Addadmin from "../Log/Addadmin";
+import Addmstaf from "../Log/Addmstaf";
+import { createContext } from "react";
 
+const Mycontext = createContext();
 function App() {
   const [count, setCount] = useState(0);
   const [regid,setRegid]=useState("");
   const [admin,setAdmin]=useState("clerk");
   const [islogin,setIslogin]=useState(false);
   const [userId,setUserId]=useState({id:null,name:"-"});
-  const backend = "https://myid-wine.vercel.app";
-  
+  const backend = "https://myid-veerengiri.vercel.app";
+  const [toggle,setToggle]=useState(false);
+ 
   return (
-    <>
+    <Mycontext.Provider value={{toggle,setToggle}}>
       <Router>
         <Routes>
           <Route path="/signIn" element={<ArtistSignIn backend={backend} setAdmin = {setAdmin} setIslogin = {setIslogin}/>} />
+          <Route path="/addAdmin" element={<Addadmin backend={backend} islogin={islogin} admin ={admin}/>} />
+          <Route path="/addStaf" element={<Addmstaf backend={backend} islogin={islogin}/>} />
           {/* <Route path="/signUp" element={<ArtUp />} /> */}
           <Route path="*" element={<Error404 />} />
           <Route
             path="/admin/artinfo"
             element={
               <div className="App">
-                <Aside setIslogin={setIslogin}/>
+                <Aside admin ={admin}  setIslogin={setIslogin}/>
                 <main>
                   <Menu />
                   <div id="router">
@@ -54,7 +61,7 @@ function App() {
             path="/admin/artist/table"
             element={
               <div className="App">
-                <Aside setIslogin={setIslogin}/>
+                <Aside admin ={admin}  setIslogin={setIslogin}/>
                 <main>
                   <Menu />
                   <div id="router">
@@ -69,7 +76,7 @@ function App() {
             path="/"
             element={
               <div className="App">
-                <Aside setIslogin={setIslogin}/>
+                <Aside admin ={admin}  setIslogin={setIslogin}/>
                 <main>
                   <Menu />
                   <div id="router">
@@ -84,7 +91,7 @@ function App() {
             path="/chat"
             element={
               <div className="App">
-                <Aside setIslogin={setIslogin}/>
+                <Aside admin ={admin}  setIslogin={setIslogin}/>
                 <main>
                   <Menu />
                   <div id="router">
@@ -99,7 +106,7 @@ function App() {
             path="/quarry"
             element={
               <div className="App">
-                <Aside setIslogin={setIslogin}/>
+                <Aside admin ={admin}  setIslogin={setIslogin}/>
                 <main>
                   <Menu />
                   <div id="router">
@@ -114,7 +121,7 @@ function App() {
             path="/admin/charts"
             element={
               <div className="App">
-                <Aside setIslogin={setIslogin}/>
+                <Aside admin ={admin}  setIslogin={setIslogin}/>
                 <main>
                   <Menu />
                   <div id="router">
@@ -129,7 +136,7 @@ function App() {
             path="/admin/event-list"
             element={
               <div className="App">
-                <Aside setIslogin={setIslogin}/>
+                <Aside admin ={admin}  setIslogin={setIslogin}/>
                 <main>
                   <Menu />
                   <div id="router">
@@ -144,7 +151,7 @@ function App() {
             path="/admin/add/event"
             element={
               <div className="App">
-                <Aside setIslogin={setIslogin}/>
+                <Aside admin ={admin}  setIslogin={setIslogin}/>
                 <main>
                   <Menu />
                   <div id="router">
@@ -159,7 +166,7 @@ function App() {
             path="/admin/add/bookmark"
             element={
               <div className="App">
-                <Aside />
+                <Aside admin ={admin}  />
                 <main>
                   <Menu />
                   <div id="router">
@@ -173,8 +180,9 @@ function App() {
           
         </Routes>
       </Router>
-    </>
+    </Mycontext.Provider>
   );
 }
 
 export default App;
+export {Mycontext}

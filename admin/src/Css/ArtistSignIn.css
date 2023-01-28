@@ -29,7 +29,7 @@
 }
 #ArtSignIn .right .data {
   display: flex;
-  width: 80%;
+  width: 84%;
   min-width: 400px;
   flex-direction: column;
   gap: 13px;

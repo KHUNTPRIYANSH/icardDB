@@ -36,7 +36,7 @@ const ProgressCheck = (props) => {
     }
   },[])
   return (
-    <section className="pro-sec" id="H4" style={{minHeight:"100vh"}}>
+    <section className="pro-sec" id="H4" style={{height:"auto"}}>
       {events.length==0 && !nodata? <div style={{marginTop:"200px"}}><Loading/></div> : nodata?<div>data not found</div>: events.map((ev,index)=>{
         return <div className="prog">
           <p>EventName : {ev.eventName}</p>

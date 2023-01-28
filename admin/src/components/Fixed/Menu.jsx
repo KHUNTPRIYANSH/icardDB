@@ -4,6 +4,8 @@ import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import MarkEmailUnreadOutlinedIcon from "@mui/icons-material/MarkEmailUnreadOutlined";
 import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
 import "../../Css/Menu.css";
+import { useContext } from "react";
+import { Mycontext } from "./App";
 const Menu = () => {
   let colTheme = document.getElementById("light-t");
   if (colTheme) {
@@ -14,6 +16,7 @@ const Menu = () => {
     // colo.style.setProperty('--dark1',`${colTheme}`)
   }
   const [theme, setTheme] = useState("light-t");
+  const {toggle}=useContext(Mycontext);
   const themeSwitch = () => {
     // console.log("light");
     if (theme === "dark-t") {
@@ -34,6 +37,13 @@ const Menu = () => {
       console.log(cl);
     });
   }
+  useEffect(()=>{
+    console.log(toggle)
+    if(toggle==true){
+      document.getElementById('toggelaside').style.display="unset"
+      document.getElementById('toggelaside').style.visibility="visible"
+    }
+  })
   return (
     <>
       <nav>
@@ -46,6 +56,12 @@ const Menu = () => {
           />
           <SearchIcon />
           {/* <button id="toglemenu">Menu</button> */}
+        </div>
+        <div id="toggelaside">
+          <button onClick={(e)=>{e.preventDefault();
+          document.getElementById('aside').style.marginLeft="0";
+            document.getElementById('toggelaside').style.visibility="hidden"
+            }} >ToggleAside</button>
         </div>
         <div className="nav-links">
           <LightModeOutlinedIcon id="light" onClick={themeSwitch} />

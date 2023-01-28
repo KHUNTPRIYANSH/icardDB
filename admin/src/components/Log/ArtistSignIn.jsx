@@ -58,7 +58,7 @@ const ArtistSignIn = (props) => {
       <section id="ArtSignIn">
         <div className="left">
           <img
-            src="https://raw.githubusercontent.com/KHUNTPRIYANSH/site_photos/main/art-log.png"
+            src="https://idcardgenrator.s3.ap-northeast-1.amazonaws.com/siteimage/art-log.png"
             alt=""
           />
         </div>

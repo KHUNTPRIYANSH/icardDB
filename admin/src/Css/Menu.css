@@ -62,11 +62,20 @@ nav .nav-links img {
 #noti:hover {
   color: limegreen;
 }
-@media all and (max-width: 768px) {
+#toggelaside{
+  display: none;
+}
+@media all and (max-width: 950px) {
   .search {
     display: none;
   }
   aside {
-    display: none;
+    /* display: none; */
+    margin-left: -270px;
   }
+  #toggelaside{
+    display: flex;
+  }
+  
+  
 }
