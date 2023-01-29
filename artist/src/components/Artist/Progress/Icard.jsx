@@ -188,8 +188,8 @@ const Icard = (props) => {
         </div>
       </div>
 
-      <section className="ID"  id="idcard" ref={componentRef} >
-        <div className="card"  id="myPage">
+      <section className="ID" id="idcard" >
+        <div className="card" id="myPage">
           <div className="content" >
             <div className="front" >
               <div className="id-info">
@@ -231,7 +231,7 @@ const Icard = (props) => {
             <div className="back" >
               <div className="fbtr"></div>
               <div className="bk-t">
-                <Qrcode value={carddata._id} size={140}  />
+                <Qrcode value={carddata._id} size={140} />
                 <p style={{ color: "black", fontWeight: "700", margin: "13.5px 0" }}>ID : {carddata._id}</p>
               </div>
               <div className="bk-txt">
@@ -249,6 +249,68 @@ const Icard = (props) => {
           Print
         </button>
       </section>
+
+      <section className="ID print" id="idcard" ref={componentRef} >
+        <div className="cardd" id="myPage">
+          <div className="contentt parent" >
+            <div className="frontt" >
+              <div className="id-info">
+                <div className="id-TT">
+                  <div className="dp">
+                    <img
+                      src={`${carddata.img}`}
+                      alt=""
+                    />
+                  </div>
+                  <h1>{carddata.name[0].name}</h1>
+                  <h3>Artist</h3>
+                </div>
+                <div className="id-bot">
+                  <div className="id-bl">
+                    <h2>Group</h2>
+                    <h2>Members</h2>
+                    <h2>Gender</h2>
+                    <h2>Mail</h2>
+                    <h2>Phone</h2>
+                    <h2>EventName</h2>
+                    <h2>Vanue</h2>
+                    <h2 className="gold" id="big">Event-Date</h2>
+                  </div>
+                  <div className="id-br">
+                    <h2>: {carddata.gname}</h2>
+                    <h2>: {carddata.tnartist}</h2>
+                    <h2>: {carddata.name[0].gender}</h2>
+                    <h2>: {carddata.name[0].email}</h2>
+                    <h2>: {carddata.name[0].phoneNo} </h2>
+                    <h2>: {edt.name}</h2>
+                    <h2>: {edt.destination}</h2>
+                    <h2 id="big">: {edt.eventDay}-{edt.eventMonth}-{edt.eventYear}</h2>
+                  </div>
+                </div>
+                <div className="ftr"></div>
+              </div>
+            </div>
+            <div className="backk" >
+              <div className="fbtr"></div>
+              <div className="bk-t">
+                <Qrcode value={carddata._id} size={140} />
+                <p style={{ color: "black", fontWeight: "700", margin: "13.5px 0" }}>ID : {carddata._id}</p>
+              </div>
+              <div className="bk-txt">
+                <big> Terms and conditions </big>
+                <small
+                >This ID is given by the Ministry of Culture, Government of
+                  India, required for attending events, can be used in hospitals,
+                  bus & train.
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </section>
+
+
     </div>
   );
 };
