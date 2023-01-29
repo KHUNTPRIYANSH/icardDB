@@ -6,6 +6,7 @@ section {
   display: grid;
   place-items: center;
 }
+
 .ID {
   width: 100vw;
   /* border: 2px solid red; */
@@ -13,6 +14,7 @@ section {
   align-items: center;
   padding: 7vw;
 }
+
 .card {
   /* position: absolute; */
   /* align-items: center; */
@@ -55,6 +57,7 @@ section {
   backface-visibility: hidden;
   overflow: hidden;
 }
+
 .front {
   background: url('https://idcardgenrator.s3.ap-northeast-1.amazonaws.com/siteimage/3.png') !important;
 
@@ -62,6 +65,7 @@ section {
   background-size: cover !important;
   /* display: none; */
 }
+
 .back {
   color: white;
   /* background: PINK; */
@@ -69,12 +73,14 @@ section {
   transform: rotateY(180deg);
 }
 
+
 .back {
   background-image: url('https://idcardgenrator.s3.ap-northeast-1.amazonaws.com/siteimage/4.png');
   background-position: bottom;
   background-size: cover;
   padding: 12.5px 25px;
 }
+
 .id-info {
   height: 100%;
   width: 100%;
@@ -89,6 +95,7 @@ section {
   background-color: white !important;
   /* border: 5px solid crimson; */
 }
+
 .id-TT {
   min-height: 250px !important;
   width: 100%;
@@ -102,21 +109,25 @@ section {
   /* background-color: lime; */
   /* border: 5px solid lime; */
 }
+
 .id-TT h1,
 h3 {
   /* padding: 7px; */
   margin: 2.5px;
   color: #eee;
 }
+
 .id-TT h1 {
   font-size: 30px !important;
 }
+
 .id-TT h3 {
   /* padding: 7px; */
   margin: 2.5px;
   font-size: 20px;
   color: rgb(255, 167, 25);
 }
+
 .id-TT .dp {
   height: 120px;
   width: 120px;
@@ -126,13 +137,16 @@ h3 {
   border: 5px solid rgb(255, 167, 25);
   /* z-index: 1; */
 }
+
 .id-TT .dp img {
   /* height: 100px; */
   width: 100%;
 }
+
 .goldd {
   color: rgb(255, 167, 25) !important;
 }
+
 .id-bot {
   height: 50%;
   font-size: 11px;
@@ -141,24 +155,29 @@ h3 {
   gap: 25px;
   margin-tt: 17.5px;
 }
+
 .id-bl,
 .id-br {
   display: flex;
   flex-direction: column;
   gap: 3px;
 }
+
 .id-bl h2,
 .id-br h2 {
   color: black;
 }
+
 .card h2 {
   margin: 1px;
 }
+
 #big {
   /* margin-top: 15px; */
   /* color: rgb(255, 167, 25); */
   font-size: 20px !important;
 }
+
 .ftr {
   height: 12.5px;
   width: 100%;
@@ -167,6 +186,7 @@ h3 {
   bottom: 0;
   background-color: orangered;
 }
+
 .back::before {
   content: '';
   left: 0px;
@@ -177,6 +197,7 @@ h3 {
   top: 0;
   background-color: orangered;
 }
+
 .bk-t {
   /* min-height: 300px; */
   width: 100%;
@@ -196,6 +217,7 @@ h3 {
 .bk-t img {
   height: 150px;
 }
+
 .bk-txt {
   width: 100%;
   display: flex;
@@ -205,9 +227,11 @@ h3 {
   text-align: center;
   /* padding: 25px; */
 }
+
 .bk-txt big {
   font-size: 20px;
 }
+
 .bk-txt big,
 .bk-txt small {
   color: #121212 !important;
@@ -217,4 +241,42 @@ h3 {
 .bk-txt small {
   font-size: 12px;
   font-weight: 400;
+}
+
+/* For Print ID card */
+
+.parent::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-color: var(--dark1);
+}
+
+.backk {
+  color: white;
+  /* background: PINK; */
+  /* display: none; */
+  /* transform: rotateY(180deg); */
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgb(243, 243, 243);
+  /* line-height: 300px; */
+  /* text-align: center; */
+  /* font-size: 60px; */
+  border-radius: 13px;
+  /* backface-visibility: hidden;  */
+  /* overflow: hidden; */
+  background-image: url('https://idcardgenrator.s3.ap-northeast-1.amazonaws.com/siteimage/4.png');
+  background-position: bottom;
+  background-size: cover;
+  padding: 12.5px 25px;
+}
+
+.cardd {
+  width: 310px;
+  height: 530px;
+  /* margin: -150px; */
+  /* float: left; */
+  perspective: 500px;
 }
