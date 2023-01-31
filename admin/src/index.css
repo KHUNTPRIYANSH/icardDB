@@ -39,6 +39,16 @@ body {
   background: var(--dark2);
   /* background-color: red !important; */
 /* } */
+@media (max-width: 860px) {
+  .eee .event-sec {
+    margin-top: 0px !important;
+    justify-content: center;
+    /* text-align: center; */
+  }
+  .e-list {
+    justify-content: center !important;
+  }
+}
 @media (max-width: 575px) {
   #art-nav {
     /* display: none; */
@@ -315,9 +325,7 @@ body {
 .prog {
   margin-top: 10vh;
 }
-.event-sec {
-  margin-top: 10vh;
-}
+
 @media (max-width: 955px) {
   #aside {
     position: absolute;

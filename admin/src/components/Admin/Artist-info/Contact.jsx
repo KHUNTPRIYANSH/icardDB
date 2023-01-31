@@ -91,7 +91,7 @@ const Contact = (props) => {
           style={{
             display: "flex",
             flexDirection: "column",
-            height: "40vh",
+            height: "45vh",
             overflow: "scroll",
             background:"var(--dark2)"
           }}

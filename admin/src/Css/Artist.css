@@ -152,7 +152,7 @@ a {
   display: flex;
   margin-bottom: 25px;
   /* align-items: center; */
-  /* justify-content: center; */
+  justify-content: center;
   /* margin-top: 50px; */
 }
 .e-title {

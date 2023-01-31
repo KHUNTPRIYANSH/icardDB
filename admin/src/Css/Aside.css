@@ -18,7 +18,7 @@ aside header {
   padding: 15px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 6.25px;
   font-size: 1.3rem;
   min-height: 80px;
@@ -148,3 +148,43 @@ aside > * {
     display: unset;
   }
 }
+/* @media (max-width: 900px) {
+  section.profile {
+    padding: 0;
+    position: relative;
+    max-width: 300px !important;
+  }
+  section.profile .dp {
+    width: 100% !important;
+    height: fit-content !important;
+    border-radius: 0 !important;
+  }
+  section.profile .dp img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+  }
+  section.profile .dp::before {
+    content: '';
+    background-color: rgba(5, 5, 36, 0.15);
+    z-index: 111;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+  section.profile .name {
+    position: absolute;
+    bottom: 50px;
+    padding-top: 15px;
+    background-color: rgba(30, 27, 49, 0.745);
+    background-color: rgba(30, 27, 49, 0.745);
+    width: 100%;
+  }
+  section.profile .type {
+    position: absolute;
+    bottom: 8px;
+    background-color: rgba(30, 27, 49, 0.745);
+    width: 100%;
+    padding: 15.5px 25px;
+  }
+} */

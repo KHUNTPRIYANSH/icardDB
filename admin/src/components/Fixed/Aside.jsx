@@ -57,7 +57,7 @@ const Aside = (props) => {
         <section className="profile">
           <div className="dp">
             <img
-              src="https://avatars.githubusercontent.com/u/58349765?s=400&u=22e094b356d4541a0372f11782d1263e0cbdcb56&v=4"
+              src="https://raw.githubusercontent.com/KHUNTPRIYANSH/site_photos/main/id/output%20(4).png"
               alt=""
             />
           </div>
