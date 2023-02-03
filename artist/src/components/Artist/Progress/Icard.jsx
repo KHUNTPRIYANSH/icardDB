@@ -148,7 +148,7 @@ const Icard = (props) => {
             glareColor="#ebe7ee47"
             glarePosition="all"
             tiltMaxAngleX="13"
-            tiltMaxAngleY="4"
+            tiltMaxAngleY="6"
             className="progressbar"
           >
             <div className="prbox"></div>
@@ -187,7 +187,6 @@ const Icard = (props) => {
           </button>
         </div>
       </div>
-
       <section className="ID" id="idcard" >
         <div className="card" id="myPage">
           <div className="content" >
@@ -249,7 +248,6 @@ const Icard = (props) => {
           Print
         </button>
       </section>
-
       <section className="ID print" id="idcard" ref={componentRef} >
         <div className="cardd" id="myPage">
           <div className="contentt parent" >
@@ -307,10 +305,7 @@ const Icard = (props) => {
             </div>
           </div>
         </div>
-        
       </section>
-
-
     </div>
   );
 };
