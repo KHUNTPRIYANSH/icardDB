@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "../../../Css/Icard.css";
-import './Nicard.css';
-import Qrcode from './Qrcode'
+import "./Nicard.css";
+import Qrcode from "./Qrcode";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import * as htmlToImage from "html-to-image";
@@ -50,13 +50,11 @@ const Icard = (props) => {
   const nav = useNavigate();
   //   const printDocument = async () => {
 
-
   // };
   const componentRef = useRef();
   const printDocument = useReactToPrint({
     content: () => componentRef.current,
   });
-
 
   // First, import the jsPDF library
 
@@ -141,14 +139,14 @@ const Icard = (props) => {
   }, []);
   return (
     <div>
-      <div style={{ padding: '20px' }}>
+      <div style={{ padding: "20px" }}>
         <div id="progress" className="progresscontener">
           <Tilt
             glareEnable={true}
             glareColor="#ebe7ee47"
             glarePosition="all"
-            tiltMaxAngleX="13"
-            tiltMaxAngleY="6"
+            tiltMaxAngleX="20"
+            tiltMaxAngleY="15"
             className="progressbar"
           >
             <div className="prbox"></div>
@@ -187,17 +185,14 @@ const Icard = (props) => {
           </button>
         </div>
       </div>
-      <section className="ID" id="idcard" >
+      <section className="ID" id="idcard">
         <div className="card" id="myPage">
-          <div className="content" >
-            <div className="front" >
+          <div className="content">
+            <div className="front">
               <div className="id-info">
                 <div className="id-TT">
                   <div className="dp">
-                    <img
-                      src={`${carddata.img}`}
-                      alt=""
-                    />
+                    <img src={`${carddata.img}`} alt="" />
                   </div>
                   <h1>{carddata.name[0].name}</h1>
                   <h3>Artist</h3>
@@ -211,7 +206,9 @@ const Icard = (props) => {
                     <h2>Phone</h2>
                     <h2>EventName</h2>
                     <h2>Vanue</h2>
-                    <h2 className="gold" id="big">Event-Date</h2>
+                    <h2 className="gold" id="big">
+                      Event-Date
+                    </h2>
                   </div>
                   <div className="id-br">
                     <h2>: {carddata.gname}</h2>
@@ -221,24 +218,34 @@ const Icard = (props) => {
                     <h2>: {carddata.name[0].phoneNo} </h2>
                     <h2>: {edt.name}</h2>
                     <h2>: {edt.destination}</h2>
-                    <h2 id="big">: {edt.eventDay}-{edt.eventMonth}-{edt.eventYear}</h2>
+                    <h2 id="big">
+                      : {edt.eventDay}-{edt.eventMonth}-{edt.eventYear}
+                    </h2>
                   </div>
                 </div>
                 <div className="ftr"></div>
               </div>
             </div>
-            <div className="back" >
+            <div className="back">
               <div className="fbtr"></div>
               <div className="bk-t">
                 <Qrcode value={carddata._id} size={140} />
-                <p style={{ color: "black", fontWeight: "700", margin: "13.5px 0" }}>ID : {carddata._id}</p>
+                <p
+                  style={{
+                    color: "black",
+                    fontWeight: "700",
+                    margin: "13.5px 0",
+                  }}
+                >
+                  ID : {carddata._id}
+                </p>
               </div>
               <div className="bk-txt">
                 <big> Terms and conditions </big>
-                <small
-                >This ID is given by the Ministry of Culture, Government of
-                  India, required for attending events, can be used in hospitals,
-                  bus & train.
+                <small>
+                  This ID is given by the Ministry of Culture, Government of
+                  India, required for attending events, can be used in
+                  hospitals, bus & train.
                 </small>
               </div>
             </div>
@@ -248,17 +255,14 @@ const Icard = (props) => {
           Print
         </button>
       </section>
-      <section className="ID print" id="idcard" ref={componentRef} >
+      <section className="ID print" id="idcard" ref={componentRef}>
         <div className="cardd" id="myPage">
-          <div className="contentt parent" >
-            <div className="frontt" >
+          <div className="contentt parent">
+            <div className="frontt">
               <div className="id-info">
                 <div className="id-TT">
                   <div className="dp">
-                    <img
-                      src={`${carddata.img}`}
-                      alt=""
-                    />
+                    <img src={`${carddata.img}`} alt="" />
                   </div>
                   <h1>{carddata.name[0].name}</h1>
                   <h3>Artist</h3>
@@ -272,7 +276,9 @@ const Icard = (props) => {
                     <h2>Phone</h2>
                     <h2>EventName</h2>
                     <h2>Vanue</h2>
-                    <h2 className="gold" id="big">Event-Date</h2>
+                    <h2 className="gold" id="big">
+                      Event-Date
+                    </h2>
                   </div>
                   <div className="id-br">
                     <h2>: {carddata.gname}</h2>
@@ -282,24 +288,34 @@ const Icard = (props) => {
                     <h2>: {carddata.name[0].phoneNo} </h2>
                     <h2>: {edt.name}</h2>
                     <h2>: {edt.destination}</h2>
-                    <h2 id="big">: {edt.eventDay}-{edt.eventMonth}-{edt.eventYear}</h2>
+                    <h2 id="big">
+                      : {edt.eventDay}-{edt.eventMonth}-{edt.eventYear}
+                    </h2>
                   </div>
                 </div>
                 <div className="ftr"></div>
               </div>
             </div>
-            <div className="backk" >
+            <div className="backk">
               <div className="fbtr"></div>
               <div className="bk-t">
                 <Qrcode value={carddata._id} size={140} />
-                <p style={{ color: "black", fontWeight: "700", margin: "13.5px 0" }}>ID : {carddata._id}</p>
+                <p
+                  style={{
+                    color: "black",
+                    fontWeight: "700",
+                    margin: "13.5px 0",
+                  }}
+                >
+                  ID : {carddata._id}
+                </p>
               </div>
               <div className="bk-txt">
                 <big> Terms and conditions </big>
-                <small
-                >This ID is given by the Ministry of Culture, Government of
-                  India, required for attending events, can be used in hospitals,
-                  bus & train.
+                <small>
+                  This ID is given by the Ministry of Culture, Government of
+                  India, required for attending events, can be used in
+                  hospitals, bus & train.
                 </small>
               </div>
             </div>
