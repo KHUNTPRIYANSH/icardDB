@@ -1,8 +1,14 @@
 .css-ag7rrr-MuiTypography-root {
   color: var(--color2d);
 }
+.fc .fc-cell-shaded,
+.fc .fc-day-disabled,
+.fc-theme-standard .fc-list-day-cushion {
+  background: var(--dark2);
+}
 .css-10hburv-MuiTypography-root,
-.css-ahj2mt-MuiTypography-root {
+.css-ahj2mt-MuiTypography-root,
+.fc .fc-button .fc-icon {
   color: rgb(236, 236, 236);
 }
 /* @media (max-width: 750px) {
