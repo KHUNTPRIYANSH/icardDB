@@ -1,18 +1,18 @@
 .css-ag7rrr-MuiTypography-root {
-  color: var(--color2d);
+  color: var(--color2d) !important;
 }
 .fc .fc-cell-shaded,
 .fc .fc-day-disabled,
 .fc-theme-standard .fc-list-day-cushion {
-  background: var(--dark2);
+  background: var(--dark2) !important;
 }
 .fc .fc-list-event:hover td {
-  background-color: var(--gold3);
+  background-color: var(--gold3) !important;
 }
 .css-10hburv-MuiTypography-root,
 .css-ahj2mt-MuiTypography-root,
 .fc .fc-button .fc-icon {
-  color: rgb(236, 236, 236);
+  color: rgb(236, 236, 236) !important;
 }
 /* @media (max-width: 750px) {
 } */
@@ -28,7 +28,7 @@
   }
 }
 .fc .fc-toolbar {
-  background: var(--dark2);
+  background: var(--dark2) !important;
 }
 @media (max-width: 610px) {
   .fc .fc-toolbar {
@@ -60,5 +60,21 @@
     order: 1 !important;
     margin: 3px 0;
     /* background: pink !important; */
+  }
+  .css-ag7rrr-MuiTypography-root {
+    color: var(--color2d) !important;
+  }
+  .fc .fc-cell-shaded,
+  .fc .fc-day-disabled,
+  .fc-theme-standard .fc-list-day-cushion {
+    background: var(--dark2) !important;
+  }
+  .fc .fc-list-event:hover td {
+    background-color: var(--gold3) !important;
+  }
+  .css-10hburv-MuiTypography-root,
+  .css-ahj2mt-MuiTypography-root,
+  .fc .fc-button .fc-icon {
+    color: rgb(236, 236, 236) !important;
   }
 }
