@@ -84,8 +84,8 @@ const Calendar = () => {
             editable={true}
             selectable={true}
             selectMirror={true}
+            selectLongPressDelay={1}
             dayMaxEvents={true}
-  selectLongPressDelay={1}
             select={handleDateClick}
             eventClick={handleEventClick}
             eventsSet={(events) => setCurrentEvents(events)}

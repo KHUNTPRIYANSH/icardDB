@@ -155,6 +155,23 @@ button {
   padding: 0 10vw;
   min-height: none !important;
 }
+/*=============cal================*/
+.css-ag7rrr-MuiTypography-root {
+  color: var(--color2d) !important;
+}
+.fc .fc-cell-shaded,
+.fc .fc-day-disabled,
+.fc-theme-standard .fc-list-day-cushion {
+  background: var(--dark2) !important;
+}
+.fc .fc-list-event:hover td {
+  background-color: var(--gold3) !important;
+}
+.css-10hburv-MuiTypography-root,
+.css-ahj2mt-MuiTypography-root,
+.fc .fc-button .fc-icon {
+  color: rgb(236, 236, 236) !important;
+}
 /*===================event=====================*/
 .event-sec {
   height: auto;
