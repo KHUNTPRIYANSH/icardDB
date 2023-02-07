@@ -16,6 +16,7 @@ import Home from "../Artist/Home/Home";
 import About from "../Artist/Home/About";
 import Contact from "../Artist/Home/Contact";
 import LegendaryCursor from "legendary-cursor";
+import Calendar from "../Calendar/Calendar";
 
 window.addEventListener("load", () => {
   LegendaryCursor.init({
@@ -120,6 +121,16 @@ function App() {
               <div id="art-site">
                 <Menu islogin={islogin} setIslogin={setIslogin} />
                 <Contact backend={backend} islogin={islogin} userId={userId} />
+                {/* <Footer /> */}
+              </div>
+            }
+          />
+          <Route
+            path="/cal"
+            element={
+              <div id="art-site">
+                <Menu islogin={islogin} setIslogin={setIslogin} />
+                <Calendar backend={backend} islogin={islogin} userId={userId} />
                 {/* <Footer /> */}
               </div>
             }

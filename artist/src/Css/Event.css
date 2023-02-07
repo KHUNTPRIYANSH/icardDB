@@ -15,7 +15,7 @@
   min-width: 353px;
   /* border: 1px solid rgb(230, 230, 230); */
   overflow: hidden !important;
-  transition: all 1s;
+  transition: border 1s;
   background: var(--dark3);
   border-radius: 13px;
   /* align-self: flex-start !important; */
@@ -40,6 +40,7 @@
   transition: all 1s;
 }
 .eee .e-list .card:hover {
+  /* transform: scale(1.1); */
   box-shadow: 0 0 30px 1px rgba(26, 26, 26, 0.35);
 }
 .eee .e-list .card:hover .card-img img {

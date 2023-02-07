@@ -21,7 +21,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="cp">
-        <div className="left ff">© Copy Write CC</div>
+        <div className="left ff">Ministry of Culture</div>
         <div className="mid ff" onClick={clickHeart}>
           Made with &nbsp;
           <i className="gold fa fa-heart-o" id="Heart" />

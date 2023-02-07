@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "../../../Css/Icard.css";
-import './Nicard.css';
-import Qrcode from './Qrcode'
+import "./Nicard.css";
+import Qrcode from "./Qrcode";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import * as htmlToImage from "html-to-image";
@@ -50,13 +50,11 @@ const Icard = (props) => {
   const nav = useNavigate();
   //   const printDocument = async () => {
 
-
   // };
   const componentRef = useRef();
   const printDocument = useReactToPrint({
     content: () => componentRef.current,
   });
-
 
   // First, import the jsPDF library
 
@@ -130,25 +128,28 @@ const Icard = (props) => {
   };
   const showId = () => {
     document.getElementById("idcard").style.display = "flex";
+    document.getElementById("hid-btn").style.display = "flex";
   };
   useEffect(() => {
     document.getElementById("idcard").style.display = "none";
+    document.getElementById("hid-btn").style.display = "none";
     if (islogin) {
       getuserdt();
+      // printDocument();
     } else {
       nav("/");
     }
   }, []);
   return (
     <div>
-      <div style={{ padding: '20px' }}>
+      <div style={{ padding: "20px" }}>
         <div id="progress" className="progresscontener">
           <Tilt
             glareEnable={true}
             glareColor="#ebe7ee47"
             glarePosition="all"
-            tiltMaxAngleX="13"
-            tiltMaxAngleY="4"
+            tiltMaxAngleX="18"
+            tiltMaxAngleY="12"
             className="progressbar"
           >
             <div className="prbox"></div>
@@ -188,7 +189,7 @@ const Icard = (props) => {
         </div>
       </div>
 
-      <section className="ID" id="idcard" >
+      {/* <section className="ID" id="idcard" >
         <div className="card" id="myPage">
           <div className="content" >
             <div className="front" >
@@ -208,17 +209,17 @@ const Icard = (props) => {
                     <h2>Group</h2>
                     <h2>Members</h2>
                     <h2>Gender</h2>
-                    <h2>Mail</h2>
+                   
                     <h2>Phone</h2>
                     <h2>EventName</h2>
                     <h2>Vanue</h2>
-                    <h2 className="gold" id="big">Event-Date</h2>
+                    <h2 className="goldd" id="big">Event-Date</h2>
                   </div>
                   <div className="id-br">
                     <h2>: {carddata.gname}</h2>
                     <h2>: {carddata.tnartist}</h2>
                     <h2>: {carddata.name[0].gender}</h2>
-                    <h2>: {carddata.name[0].email}</h2>
+             
                     <h2>: {carddata.name[0].phoneNo} </h2>
                     <h2>: {edt.name}</h2>
                     <h2>: {edt.destination}</h2>
@@ -248,69 +249,86 @@ const Icard = (props) => {
         <button onClick={printDocument} className="btn">
           Print
         </button>
-      </section>
+      </section> */}
 
-      <section className="ID print" id="idcard" ref={componentRef} >
-        <div className="cardd" id="myPage">
-          <div className="contentt parent" >
-            <div className="frontt" >
-              <div className="id-info">
-                <div className="id-TT">
-                  <div className="dp">
-                    <img
-                      src={`${carddata.img}`}
-                      alt=""
-                    />
+      <section className="ID print">
+        <div id="idcard" ref={componentRef}>
+          <div className="cardd" id="myPage">
+            <div className="contentt parent">
+              <div className="frontt">
+                <div className="id-info">
+                  <div className="id-TT">
+                    <div className="dp">
+                      <img src={`${carddata.img}`} alt="" />
+                    </div>
+                    <h1>{carddata.name[0].name}</h1>
+                    <h3>Artist</h3>
                   </div>
-                  <h1>{carddata.name[0].name}</h1>
-                  <h3>Artist</h3>
+                  <div className="id-bot">
+                    <div className="id-bl">
+                      <h2>Group</h2>
+                      <h2>Members</h2>
+                      <h2>Gender</h2>
+                      {/* <h2>Mail</h2> */}
+                      <h2>Phone</h2>
+                      <h2>EventName</h2>
+                      <h2>Vanue</h2>
+                      <h2 className="goldd" id="big">
+                        Event-Date
+                      </h2>
+                    </div>
+                    <div className="id-br">
+                      <h2>: {carddata.gname}</h2>
+                      <h2>: {carddata.tnartist}</h2>
+                      <h2>: {carddata.name[0].gender}</h2>
+                      {/* <h2>: {carddata.name[0].email}</h2> */}
+                      <h2>: {carddata.name[0].phoneNo} </h2>
+                      <h2>: {edt.name}</h2>
+                      <h2>: {edt.destination}</h2>
+                      <h2 id="big">
+                        : {edt.eventDay}-{edt.eventMonth}-{edt.eventYear}
+                      </h2>
+                    </div>
+                  </div>
+                  <div className="ftr"></div>
                 </div>
-                <div className="id-bot">
-                  <div className="id-bl">
-                    <h2>Group</h2>
-                    <h2>Members</h2>
-                    <h2>Gender</h2>
-                    <h2>Mail</h2>
-                    <h2>Phone</h2>
-                    <h2>EventName</h2>
-                    <h2>Vanue</h2>
-                    <h2 className="gold" id="big">Event-Date</h2>
-                  </div>
-                  <div className="id-br">
-                    <h2>: {carddata.gname}</h2>
-                    <h2>: {carddata.tnartist}</h2>
-                    <h2>: {carddata.name[0].gender}</h2>
-                    <h2>: {carddata.name[0].email}</h2>
-                    <h2>: {carddata.name[0].phoneNo} </h2>
-                    <h2>: {edt.name}</h2>
-                    <h2>: {edt.destination}</h2>
-                    <h2 id="big">: {edt.eventDay}-{edt.eventMonth}-{edt.eventYear}</h2>
-                  </div>
-                </div>
-                <div className="ftr"></div>
               </div>
             </div>
-            <div className="backk" >
-              <div className="fbtr"></div>
-              <div className="bk-t">
-                <Qrcode value={carddata._id} size={140} />
-                <p style={{ color: "black", fontWeight: "700", margin: "13.5px 0" }}>ID : {carddata._id}</p>
-              </div>
-              <div className="bk-txt">
-                <big> Terms and conditions </big>
-                <small
-                >This ID is given by the Ministry of Culture, Government of
-                  India, required for attending events, can be used in hospitals,
-                  bus & train.
-                </small>
+          </div>
+          <div className="cardd" id="myPage">
+            <div className="contentt parent">
+              <div className="backk">
+                <div className="fbtr"></div>
+                <div className="bk-t">
+                  <Qrcode value={carddata._id} size={110} />
+                  <p
+                    style={{
+                      color: "black",
+                      fontWeight: "700",
+                      margin: "7px 0",
+                    }}
+                  >
+                    ID : {carddata._id}
+                  </p>
+                </div>
+                <div className="bk-txt">
+                  <big> Terms and conditions </big>
+                  <small>
+                    This ID is given by the Ministry of Culture, Government of
+                    India, required for attending events, can be used in
+                    hospitals, bus & train.
+                  </small>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        
+        <div className="bt-cont" id="hid-btn">
+          <button onClick={printDocument} className="btn">
+            Print
+          </button>
+        </div>
       </section>
-
-
     </div>
   );
 };

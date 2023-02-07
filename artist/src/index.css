@@ -191,7 +191,7 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 10vh 10vw;
-  padding-bottom: 0;
+  padding-bottom: 50px;
 }
 .a-left {
   width: 45vw;
@@ -542,4 +542,7 @@ button {
 .gold,
 #logo {
   color: var(--gold2) !important;
+}
+#art-nav header > * {
+  color: var(--gold1) !important;
 }

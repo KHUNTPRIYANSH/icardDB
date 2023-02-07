@@ -94,7 +94,7 @@ const Events = (props) => {
         <section>
           <div className="e-list">
             {events.length == 0 ? (
-              <div style={{ width: "100vw" }}>
+              <div style={{ width: "100%" }}>
                 <Loading />
               </div>
             ) : (

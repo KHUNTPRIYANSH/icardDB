@@ -41,7 +41,7 @@ const Menu = (props) => {
     } else {
       console.log("hid");
       document.getElementById("Linkzz-h").style.visibility = "hidden";
-      document.getElementById("Linkzz-h").style.top = "-400px";
+      document.getElementById("Linkzz-h").style.top = "-600px";
 
       setMenu(false);
     }
@@ -93,6 +93,17 @@ const Menu = (props) => {
             Progress
           </Link>
           <Link
+            to="/cal"
+            style={{
+              display: `${islogin ? "unset" : "none"}`,
+              color: `${
+                location.pathname == "/cal" ? "var(--gold1)" : "unset"
+              }`,
+            }}
+          >
+            Calendar
+          </Link>
+          <Link
             to="/contact"
             style={{
               display: `${islogin ? "unset" : "none"}`,
@@ -126,6 +137,7 @@ const Menu = (props) => {
             style={{
               display: `${islogin ? "unset" : "none"}`,
               cursor: "pointer",
+              textTransform: "capitalize",
             }}
             onClick={(d) => {
               d.preventDefault();
@@ -180,6 +192,15 @@ const Menu = (props) => {
           }}
         >
           Progress
+        </Link>
+        <Link
+          to="/cal"
+          style={{
+            display: `${islogin ? "unset" : "none"}`,
+            color: `${location.pathname == "/cal" ? "var(--gold1)" : "unset"}`,
+          }}
+        >
+          Calendar
         </Link>
         <Link
           to="/contact"

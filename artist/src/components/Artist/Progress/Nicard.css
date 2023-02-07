@@ -22,7 +22,7 @@ section {
   /* TT: 50%; */
   /* left: 50%; */
   width: 310px;
-  height: 530px;
+  height: 500px;
   /* margin: -150px; */
   /* float: left; */
   perspective: 500px;
@@ -61,7 +61,7 @@ section {
 .front {
   background: url('https://idcardgenrator.s3.ap-northeast-1.amazonaws.com/siteimage/3.png') !important;
 
-  background-position: TT;
+  background-position: -500px;
   background-size: cover !important;
   /* display: none; */
 }
@@ -72,7 +72,6 @@ section {
   /* display: none; */
   transform: rotateY(180deg);
 }
-
 
 .back {
   background-image: url('https://idcardgenrator.s3.ap-northeast-1.amazonaws.com/siteimage/4.png');
@@ -202,7 +201,7 @@ h3 {
   /* min-height: 300px; */
   width: 100%;
   display: flex;
-  margin-top: 12.5px;
+  margin-top: 7px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -210,7 +209,7 @@ h3 {
   /* margin-TT: 50px; */
   /* background-color: lime; */
   /* border: 5px solid lime; */
-  min-height: 190px;
+  min-height: 150px;
   /* padding: 50px; */
 }
 
@@ -229,7 +228,7 @@ h3 {
 }
 
 .bk-txt big {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .bk-txt big,
@@ -245,12 +244,12 @@ h3 {
 
 /* For Print ID card */
 
-.parent::before {
-  content: "";
+/* .parent::before {
+  content: '';
   height: 100%;
   width: 100%;
   background-color: var(--dark1);
-}
+} */
 
 .backk {
   color: white;
@@ -260,7 +259,7 @@ h3 {
   position: absolute;
   height: 100%;
   width: 100%;
-  background: rgb(243, 243, 243);
+  background: rgb(255, 255, 255);
   /* line-height: 300px; */
   /* text-align: center; */
   /* font-size: 60px; */
@@ -270,13 +269,47 @@ h3 {
   background-image: url('https://idcardgenrator.s3.ap-northeast-1.amazonaws.com/siteimage/4.png');
   background-position: bottom;
   background-size: cover;
-  padding: 12.5px 25px;
+  padding: 30px 25px;
 }
-
 .cardd {
   width: 310px;
-  height: 530px;
+  height: 500px;
   /* margin: -150px; */
   /* float: left; */
   perspective: 500px;
+  background: white;
+  border-radius: 13px;
+  /* border: 1px solid rgb(28, 28, 28); */
+  box-shadow: 0 0 15px #21212176;
+  overflow: hidden;
+}
+.backk .fbtr {
+  height: 12.5px;
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: orangered;
+}
+
+@media (max-width: 750px) {
+}
+@media (max-width: 550px) {
+  .cardd {
+    /* transform: scale(0.9); */
+  }
+}
+.bt-cont {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 7px 50px;
+  align-items: center;
+}
+#idcard {
+  display: flex;
+  gap: 50px;
+  flex-direction: column;
 }
