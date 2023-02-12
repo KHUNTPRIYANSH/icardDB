@@ -57,7 +57,8 @@
   font-size: 0.9rem;
   margin-bottom: 7px;
 }
-#ArtSignIn .right .data input {
+#ArtSignIn .right .data input,
+.otp input {
   font-size: 1.05rem;
   background-color: var(--dark3);
   padding: 13px 25px;
@@ -68,7 +69,8 @@
   margin-bottom: 13px;
   color: var(--color2d);
 }
-#ArtSignIn .right .data input::placeholder {
+#ArtSignIn .right .data input::placeholder,
+.otp input::placeholder {
   color: var(--color2d);
 }
 #ArtSignIn .right .data form .btn {
@@ -142,4 +144,7 @@
 }
 #ArtSignIn a {
   text-decoration: underline;
+}
+#test-btn {
+  margin: 0;
 }

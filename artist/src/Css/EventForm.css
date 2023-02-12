@@ -131,3 +131,39 @@
 .selectdiv:hover {
   border: 1px solid white;
 }
+#tp {
+  /* border: 5px solid crimson; */
+  width: 100%;
+  color: var(--color2d) !important;
+  background-color: var(--dark2);
+}
+#tp > * {
+  /* border: 3px solid aqua; */
+}
+#tp h3 {
+  font-size: 1.45rem;
+  padding-left: 15px;
+  margin: 0 !important;
+}
+#tp1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#tp1 input {
+  flex: 1;
+  margin-left: 5px;
+  justify-content: flex-start;
+  /* width: fit-content; */
+  min-height: 10px !important;
+}
+#tp1 span {
+  flex: 1;
+  min-width: fit-content;
+  /* background-color: lime; */
+}
+#xw {
+  display: flex;
+  gap: 25px;
+  padding: 15px;
+}

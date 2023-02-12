@@ -17,8 +17,9 @@ export default function Home() {
         </h2>
         <Link to="/events">
           <div className="btn">Explore Events</div>
+        
         </Link>
-      </div>
+        </div>
       <div className="h-right">
         <img
           src="https://idcardgenrator.s3.ap-northeast-1.amazonaws.com/siteimage/art-log.png"

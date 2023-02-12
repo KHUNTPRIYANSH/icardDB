@@ -19,7 +19,12 @@ routeruser.post("/api/regforevent", async (req, res) => {
       img,
       adhar,
       sign,
+      govpho,
+      link,
     } = req.body;
+
+    console.log(govpho);
+
     const event = await events.findById(eventId);
     const eventName = event.name;
     const dt = new Date();
@@ -44,7 +49,11 @@ routeruser.post("/api/regforevent", async (req, res) => {
       gphoto,
       img,
       adhar,
+      smcl: false,
+      smcom: false,
       sign,
+      govpho,
+      vlink: link,
       PEON: "Pending",
       officer: "Pending",
       commisioner: "Pending",
@@ -59,6 +68,75 @@ routeruser.post("/api/regforevent", async (req, res) => {
     res.json({ status: "error" });
   }
 });
+
+routeruser.get("/api/clerklevel/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const data = await newReg.find({ _id: id });
+
+  if (!data) {
+    res.status(201).json("id is not exist");
+  }
+
+  try {
+    const update = await newReg.findByIdAndUpdate(
+      { _id: id },
+      { smcl: "true" }
+    );
+
+    res.json(update);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+});
+routeruser.get("/api/comlevel/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const data = await newReg.find({ _id: id });
+
+  if (!data) {
+    res.status(201).json("id is not exist");
+  }
+
+  try {
+    const update = await newReg.findByIdAndUpdate(
+      { _id: id },
+      { smcom: "true" }
+    );
+
+    res.json(update);
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+});
+
+routeruser.get("/api/level/:rid", async (req, res) => {
+  try {
+    const { level } = await newReg
+      .findById(req.params.rid)
+      .select("level -_id");
+    res.json({ status: "ok", level });
+  } catch (er) {
+    res.json({ status: "error" });
+  }
+});
+
+routeruser.get("/api/updatelevel/:rid/:level", async (req, res) => {
+  try {
+    const { rid, level } = req.params;
+    const dt = await newReg.findById(rid);
+    const lev = dt.level;
+    if (lev == level - 1) {
+      const dt = await newReg.findByIdAndUpdate(rid, { level: level });
+      res.json({ status: "ok" });
+    } else {
+      res.json({ status: "Invalid data" });
+    }
+  } catch (error) {
+    res.json({ status: "ok" });
+  }
+});
+
 routeruser.get("/api/getuser", async (req, res) => {
   try {
     const getuser = await newReg.find();
@@ -518,7 +596,7 @@ routeruser.get("/api/approve/clerk/:id", async (req, res) => {
       res.status(404).json({ msg: "not updated" });
     }
 
-    res.status(200).json({status:"ok"});
+    res.status(200).json({ status: "ok" });
   } catch (error) {
     res.status(404).json({ msg: "error in documents" });
   }
@@ -539,7 +617,7 @@ routeruser.get("/api/approve/dydo/:id", async (req, res) => {
       res.status(404).json({ msg: "not updated" });
     }
 
-    res.status(200).json({status:"ok"});
+    res.status(200).json({ status: "ok" });
   } catch (error) {
     res.status(404).json({ msg: "error in documents" });
   }
@@ -558,7 +636,7 @@ routeruser.get("/api/approve/commisioner/:id", async (req, res) => {
       res.status(404).json({ msg: "not updated" });
     }
 
-    res.status(200).json({status:"ok"});
+    res.status(200).json({ status: "ok" });
   } catch (error) {
     res.status(404).json({ msg: "error in documents" });
   }
@@ -592,6 +670,5 @@ routeruser.get("/checkstatus/:id", async (req, res) => {
     res.status(404).json({ msg: "error in documents", error: error.me });
   }
 });
-
 
 module.exports = routeruser;

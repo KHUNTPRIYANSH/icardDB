@@ -18,7 +18,7 @@ aside header {
   padding: 15px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 6.25px;
   font-size: 1.3rem;
   min-height: 80px;

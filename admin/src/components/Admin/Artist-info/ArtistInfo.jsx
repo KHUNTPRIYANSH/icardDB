@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../../Css/ArtistInfo.css";
+import emailjs from "@emailjs/browser";
+
 const ArtistInfo = (props) => {
   const { admin, id, backend, islogin } = props;
-
+  console.log(admin + " hi");
   const [showpart, setShowpart] = useState(false);
   const [sp, setsp] = useState("Show all participants");
   const [adminapr, setAdminapr] = useState(false);
+  const [level, setLevel] = useState("0");
   const nav = useNavigate();
   const [artist, setArtist] = useState({
     gname: "--",
@@ -34,6 +37,7 @@ const ArtistInfo = (props) => {
     img: "#",
     adhar: "#",
     sign: "#",
+    govpho: "#",
     PEON: "--",
     officer: "--",
     commisioner: "--",
@@ -101,7 +105,6 @@ const ArtistInfo = (props) => {
       if (data.status != "ok") {
         alert(data.status);
       } else {
-        setAdminapr(true);
       }
     }
   };
@@ -109,15 +112,118 @@ const ArtistInfo = (props) => {
     if (!islogin) {
       nav("/signIn");
     } else {
-      
       setTimeout(() => {
         console.log(id);
         getartist();
       }, 1000);
     }
   }, []);
+
+  const sendmailclrk = async (k) => {
+    const res = await fetch(`${backend}/api/updatelevel/${k}/1`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    const data = await res.json();
+
+    if (data.status != "ok") {
+      alert(data.status);
+    } else {
+      getlevel();
+    }
+  };
+  const sendmailcommisioner = async (k) => {
+    const res = await fetch(`${backend}/api/updatelevel/${k}/2`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    const data = await res.json();
+
+    if (data.status != "ok") {
+      alert(data.status);
+    } else {
+      getlevel();
+    }
+  };
+  const getlevel = async () => {
+    const data = await fetch(`${backend}/api/level/${id}`, { method: "GET" });
+    const res = await data.json();
+
+    console.log(res);
+
+    if ((res.status = "ok")) {
+      if (res.level == 1) {
+        setLevel("1");
+      }
+
+      if (res.level == 2) {
+        setLevel("2");
+      }
+    } else {
+    }
+  };
+  const form = useRef();
+  const sendmail = async () => {
+    await emailjs
+      .sendForm(
+        "service_z80kdsc",
+        "template_1g6p4vm",
+        form.current,
+        "tAnIMRTGjOth0eHFS"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert("Mail is send");
+          sendmailclrk(id);
+          getlevel();
+          return true;
+        },
+        (error) => {
+          console.log(error.text);
+          return false;
+        }
+      );
+  };
+  useEffect(() => {
+    getlevel();
+  }, []);
+
   return (
     <div>
+      <form style={{ display: "none" }} ref={form}>
+        <label>Name</label>
+        <input
+          type="text"
+          value={"virengirigoswami3@gmail.com"}
+          onChange={() => {}}
+          name="user_name"
+        />
+        <br />
+        <label>Email</label>
+        <input
+          type="email"
+          value={"khuntpriyansh1@gmail.com"}
+          onChange={() => {}}
+          name="user_email"
+        />
+        <br />
+        <label>Message</label>
+        <textarea
+          value={
+            "your from is seen and you have to come after 3 days.  sedule_ofline_meet: https://calendly.com/lodhiyaamin88/verification-process?month=2023-02"
+          }
+          onChange={() => {}}
+          name="message"
+        />
+        <br />
+        <input type="submit" value="Send" />
+              
+      </form>
       <header className="event-sec">
         <div className="e-title">
           Details
@@ -233,21 +339,92 @@ const ArtistInfo = (props) => {
             <img src={artist.sign} alt="" />
           </div>
         </div>
-        <center className="wpp">
-          <div className="forbtn">
-            <div
-              className="btn submit"
-              onClick={approve}
-              style={{ display: `${!adminapr ? "unset" : "none"}` }}
-            >
-              Approve
-            </div>
+        <div className="i-field">
+          <div className="i-l">
+            <div className="ol-l">Goverment Cirtificate</div>
           </div>
+          <div className="i-r i-r-s">
+            <img src={artist.govpho} alt="" />
+          </div>
+        </div>
+        <center className="wpp">
+          <div style={{ display: `${admin == "clerk" ? "unset" : "none"}` }}>
+            {level == "1" ? (
+              <div className="forbtn">
+                <div
+                  className="btn submit"
+                  onClick={approve}
+                  style={{ display: `${!adminapr ? "unset" : "none"}` }}
+                >
+                  Approve
+                </div>
+              </div>
+            ) : (
+              // <a
+              //   href={`mailto:${artist.name[0].email},vaghelaajit464@gmail.com?subject='Regarding The validation !'&body={${artist.gname}to come after 3 days}`}
+              // >
+              //   <button onClick={() => sendmailclrk(id)}>mail me</button>
+              // </a>
+              <button className="btn b5b" onClick={sendmail}>
+                Send mail
+              </button>
+            )}
+          </div>
+          <div style={{ display: `${admin == "dydo" ? "unset" : "none"}` }}>
+            {artist.vlink ? (
+              <div>
+                <a href={`${artist.vlink}`} target="_blank">
+                  <button className="btn b5b">video</button>
+                </a>
+
+                <div className="forbtn">
+                  <div
+                    className="btn submit"
+                    onClick={approve}
+                    style={{ display: `${!adminapr ? "unset" : "none"}` }}
+                  >
+                    Approve
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <div className="forbtn">
+                  <div
+                    className="btn submit"
+                    onClick={approve}
+                    style={{ display: `${!adminapr ? "unset" : "none"}` }}
+                  >
+                    Approve
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+          <div
+            style={{ display: `${admin == "commisioner" ? "unset" : "none"}` }}
+          >
+            {level == "2" ? (
+              <div className="forbtn">
+                <div
+                  className="btn submit"
+                  onClick={approve}
+                  style={{ display: `${!adminapr ? "unset" : "none"}` }}
+                >
+                  Approve
+                </div>
+              </div>
+            ) : (
+              <a
+                href={`mailto:${artist.name[0].email},vaghelaajit464@gmail.com?subject='Regarding The validation !'&body={${artist.gname}to come after 3 days}`}
+              >
+                <button onClick={() => sendmailcommisioner(id)}>mail me</button>
+              </a>
+            )}
+          </div>
+
           <div className="forbtn">
-            <div
-              className="btn reset"
-              onClick={reject}
-            >
+            <div className="btn reset" onClick={reject}>
               Reject
             </div>
           </div>

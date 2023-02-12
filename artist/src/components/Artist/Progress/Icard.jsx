@@ -86,6 +86,7 @@ const Icard = (props) => {
       },
     });
     const data = await res.json();
+    console.log(data);
     if (data.pg == 3) {
       setApr(true);
       setCarddata(data.data);
@@ -118,6 +119,8 @@ const Icard = (props) => {
         document.getElementById("r2").style.backgroundColor = "rgb(15,180, 18)";
         document.getElementById("p3").style.backgroundColor = "rgb(15,180, 18)";
         document.getElementById("r3").style.backgroundColor = "rgb(15,180, 18)";
+        document.getElementById("p4").style.backgroundColor = "rgb(15,180, 18)";
+        document.getElementById("r4").style.backgroundColor = "rgb(15,180, 18)";
 
         document.getElementById("r3").style.boxShadow =
           "0.5px 0.5px 5px 6px rgba(0, 128, 0, 0.4)";
@@ -148,34 +151,45 @@ const Icard = (props) => {
             glareEnable={true}
             glareColor="#ebe7ee47"
             glarePosition="all"
-            tiltMaxAngleX="18"
-            tiltMaxAngleY="12"
+            tiltMaxAngleX="3"
+            tiltMaxAngleY="6"
             className="progressbar"
           >
             <div className="prbox"></div>
             <p className="gold">Id Status</p>
-            <div id="0">
+            <div id="p0">
               <div
                 id="r0"
                 className="roundfill"
                 style={{ backgroundColor: "rgb(15,190, 18)" }}
               ></div>
-              <div className="approved">Registerd</div>
+              <div className="approved">
+                Form Submission & Online Documents upload
+              </div>
             </div>
             <div id="p1" className="progressline"></div>
             <div>
               <div id="r1" className="roundfill"></div>
-              <div className="approved">Approved by Clerk</div>
+              <div className="approved">
+                Offline Documents Verification (Original)
+              </div>
             </div>
+
             <div id="p2" className="progressline"></div>
             <div>
               <div id="r2" className="roundfill"></div>
-              <div className="approved">Approved by DYDO</div>
+              <div className="approved">Video Verification by dydo</div>
             </div>
+
             <div id="p3" className="progressline"></div>
             <div>
               <div id="r3" className="roundfill"></div>
-              <div className="approved">Approved by commisioner</div>
+              <div className="approved">Experts Verification</div>
+            </div>
+            <div id="p4" className="progressline"></div>
+            <div>
+              <div id="r4" className="roundfill"></div>
+              <div className="approved">Commisionar Approval</div>
             </div>
           </Tilt>
           <button

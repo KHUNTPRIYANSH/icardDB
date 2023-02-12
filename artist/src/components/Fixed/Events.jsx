@@ -120,7 +120,7 @@ const Events = (props) => {
                           handlejoin(cr);
                         }}
                       >
-                        Join Now
+                        Register
                       </div>
                     </div>
                   </div>

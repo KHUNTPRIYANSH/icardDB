@@ -48,7 +48,8 @@ function App() {
   const [userId, setUserId] = useState(null);
   const [eventId, setEventId] = useState(null);
   const [regId, setRegId] = useState(null);
-  const backend = "https://myid-veerengiri.vercel.app";
+  // const backend = "https://myid-veerengiri.vercel.app";
+  const backend = "http://localhost:8080"
   return (
     <>
       <Router>

@@ -30,7 +30,9 @@ function App() {
   const [admin,setAdmin]=useState("clerk");
   const [islogin,setIslogin]=useState(false);
   const [userId,setUserId]=useState({id:null,name:"-"});
-  const backend = "https://myid-veerengiri.vercel.app";
+  //const backend = "https://myid-veerengiri.vercel.app";
+  const backend = "http://localhost:8080";
+
   const [toggle,setToggle]=useState(false);
  
   return (

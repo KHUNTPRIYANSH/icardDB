@@ -3,8 +3,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import MarkEmailUnreadOutlinedIcon from "@mui/icons-material/MarkEmailUnreadOutlined";
 import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
-import "../../Css/Menu.css";import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';import CloseIcon from '@mui/icons-material/Close';
+import "../../Css/Menu.css";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import { useContext } from "react";
 import { Mycontext } from "./App";
 import { Link } from "react-router-dom";
@@ -18,7 +20,7 @@ const Menu = () => {
     // colo.style.setProperty('--dark1',`${colTheme}`)
   }
   const [theme, setTheme] = useState("light-t");
-  const {toggle}=useContext(Mycontext);
+  const { toggle } = useContext(Mycontext);
   const themeSwitch = () => {
     // console.log("light");
     if (theme === "dark-t") {
@@ -39,18 +41,21 @@ const Menu = () => {
       console.log(cl);
     });
   }
-  useEffect(()=>{
-    console.log(toggle)
-    if(toggle==true){
-      document.getElementById('toggelaside').style.display="unset"
-      document.getElementById('toggelaside').style.visibility="visible"
+  useEffect(() => {
+    console.log(toggle);
+    if (toggle == true) {
+      document.getElementById("toggelaside").style.display = "unset";
+      document.getElementById("toggelaside").style.visibility = "visible";
     }
-  })
+  });
 
   return (
     <>
       <nav>
-        <div className="search">
+        <div
+          className="search"
+          style={{ visibility: "hidden", pointerEvents: "none" }}
+        >
           <input
             type="search"
             name=""
@@ -61,24 +66,26 @@ const Menu = () => {
           {/* <button id="toglemenu">Menu</button> */}
         </div>
         <div id="toggelaside">
-          <IconButton className="toggg" onClick={(e)=>{e.preventDefault();
-             document.getElementById('aside').style.marginLeft="0";
-            document.getElementById('toggelaside').style.visibility="hidden"
-            }} >
-
-              <MenuIcon />
-               </IconButton>
+          <IconButton
+            className="toggg"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("aside").style.marginLeft = "0";
+              document.getElementById("toggelaside").style.visibility =
+                "hidden";
+            }}
+          >
+            <MenuIcon />
+          </IconButton>
         </div>
         <div className="nav-links">
           <IconButton>
-          <LightModeOutlinedIcon id="light" onClick={themeSwitch} />
-
+            <LightModeOutlinedIcon id="light" onClick={themeSwitch} />
           </IconButton>
-        <Link to="/quarry">
+          <Link to="/quarry">
             <IconButton>
-
-          <MarkEmailUnreadOutlinedIcon id="mail" />
-          </IconButton>
+              <MarkEmailUnreadOutlinedIcon id="mail" />
+            </IconButton>
           </Link>
           {/* <IconButton>
             

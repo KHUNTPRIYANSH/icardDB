@@ -195,9 +195,6 @@ router.get('/api/geturl/:filetype',async (req,res)=>{
     }
 })
 
-
-
-
 router.post('/api/addevent',async (req,res)=>{
     try {
        const {name,desc,image, eventDay,eventMonth,eventYear,destination }= req.body;

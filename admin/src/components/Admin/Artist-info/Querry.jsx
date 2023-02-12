@@ -20,7 +20,7 @@ function Querry(props) {
   }, []);
   return (
     <div>
-      <h1 style={{ color: "var(--color2d)" }}>Artists Qarrys</h1>
+      <h1 style={{ color: "var(--color2d)" }}>Artists Queries</h1>
       <div>
         {qrs.length == 0 ? (
           <Loading />

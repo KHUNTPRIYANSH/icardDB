@@ -17,7 +17,8 @@ import ModeIcon from "@mui/icons-material/Mode";
 import MaleIcon from "@mui/icons-material/Male";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import { useNavigate } from "react-router-dom";
-import swal from 'sweetalert'
+import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+import swal from "sweetalert";
 
 const EventForm = (props) => {
   const { userId, eventId, backend, islogin } = props;
@@ -35,12 +36,19 @@ const EventForm = (props) => {
   const [gp, setGp] = useState(null);
   const [adhar, setAdhar] = useState(null);
   const [sign, setSign] = useState(null);
+  const [govpho, setgovpho] = useState(null);
   const [psptype, setPsptype] = useState("");
   const [gptype, setGptype] = useState("");
   const [adhartype, setAdhartype] = useState("");
   const [signtype, setSigntype] = useState("");
+  const [govphotype, setgovphotype] = useState("");
   const [submit, setSubmit] = useState("Submit");
   const [select, setSelect] = useState("No of Participants");
+
+  const [linkshow, setlinkshow] = useState(false);
+  const [stay, setstay] = useState("");
+  const [link, setlink] = useState("");
+
   const checkdetails = () => {
     if (psp && gp && adhar && sign) {
       if (
@@ -96,7 +104,7 @@ const EventForm = (props) => {
   const handlesubmit = async (e) => {
     e.preventDefault();
     if (!checkdetails()) {
-      swal("invalid credentials!","", "error");
+      swal("invalid credentials!", "", "error");
       return;
     }
     setSubmit("Just A Sec...");
@@ -114,6 +122,8 @@ const EventForm = (props) => {
     const img = await uploadfile(psptype, psp);
     const adharcard = await uploadfile(adhartype, adhar);
     const signf = await uploadfile(signtype, sign);
+    const govphoto = await uploadfile(govphotype, govpho);
+    console.log(govphoto);
     const tnartist = totalpart;
     const TOP = "no";
     const res = await fetch(`${backend}/api/regforevent`, {
@@ -128,12 +138,14 @@ const EventForm = (props) => {
         tnartist,
         eventId: eventId.id,
         TOP,
+        link,
         FOICD: focid,
         DOA: doa,
         gphoto: gphoto.toString(),
         img: img.toString(),
         adhar: adharcard.toString(),
         sign: signf.toString(),
+        govpho: govphoto.toString(),
       }),
     });
     const data = await res.json();
@@ -151,6 +163,7 @@ const EventForm = (props) => {
   const openselection = () => {
     document.getElementById("select").style.display = "unset";
   };
+
   return (
     <div>
       <header className="event-sec">
@@ -175,6 +188,21 @@ const EventForm = (props) => {
               className="name"
               placeholder="Group Name"
             />
+          </div>
+          <div className="input">
+            <label className="icon">
+              <OndemandVideoIcon />
+            </label>
+            <div id="tp">
+              <h3>Submit video</h3>
+
+              <input
+                type="text"
+                className="name"
+                onChange={(e) => setlink(e.target.value)}
+                placeholder="Youtube url or any other link"
+              />
+            </div>
           </div>
           <div className="input">
             <label className="icon">
@@ -453,6 +481,23 @@ const EventForm = (props) => {
                 onChange={(d) => {
                   setSign(d.target.files);
                   setSigntype(d.target.value);
+                }}
+                name=""
+                id=""
+              />
+            </div>
+          </div>
+          <div className="input">
+            <label className="icon">
+              <ModeIcon />
+            </label>
+            <div className="nn2">
+              <div className="tx">The Goverment cirtificate</div>
+              <input
+                type="file"
+                onChange={(d) => {
+                  setgovpho(d.target.files);
+                  setgovphotype(d.target.value);
                 }}
                 name=""
                 id=""
